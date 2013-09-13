@@ -1,0 +1,46 @@
+<head>
+  <title>first_roll</title>
+</head>
+
+<body>
+  {{> hello}}
+  {{> list}}
+  {{> alldice}}
+</body>
+
+<template name="hello">
+  <div class="hello">
+    <h1>Hello World!</h1>
+    {{greeting}}
+  </div>
+</template>
+
+<template name="list">
+    <div class="list">
+      {{#each games}}
+        {{> game}}
+      {{/each}}
+    </div>
+</template>
+
+<template name="game">
+  <div class="game">
+    <span class="name">{{name}}</span>
+  </div>
+</template>
+
+<template name="alldice">
+    <div class="all-dice">
+        {{#each dice}}
+          {{> die}}
+        {{/each}}        
+    </div>
+</template>
+
+<template name="die">
+    <div class="single-die {{type}}">
+        <p>Sides: {{sides}}</p>
+        <p>Result: {{result}}</p>
+        <input type="button" class="roll">
+    </div>
+</template>
