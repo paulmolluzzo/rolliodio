@@ -4,6 +4,7 @@
 
 <body>
   {{> hello}}
+  {{> newgame}}
   {{> list}}
   {{> alldice}}
 </body>
@@ -13,6 +14,12 @@
     <h1>Hello World!</h1>
     {{greeting}}
   </div>
+</template>
+
+<template name="newgame">
+    <div class="newgame">
+        <input type="button" class="generate" value="Create New Game">
+    </div>
 </template>
 
 <template name="list">
@@ -39,8 +46,18 @@
 
 <template name="die">
     <div class="single-die {{type}}">
+        <p>Date: {{date}}</p>
+        <p>Game: {{game}}</p>
         <p>Sides: {{sides}}</p>
         <p>Result: {{result}}</p>
         <input type="button" class="roll">
+    </div>
+</template>
+
+<template name="allgames">
+    <div class="all-games">
+        {{#each games}}
+          {{> game}}
+        {{/each}}        
     </div>
 </template>
