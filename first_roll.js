@@ -5,16 +5,16 @@ if (Meteor.isClient) {
     
     Template.newgame.events({
         'click input.generate': function(){
-        var currentdate = new Date();
-        var datetime = "Last Sync: " + currentdate.getDate() + "/"+(currentdate.getMonth()+1) 
-        + "/" + currentdate.getFullYear() + " @ " 
-        + currentdate.getHours() + ":" 
-        + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-        Games.insert({name: "test", });
-        var newGame = Games.findOne({name: "test"})
+        var currentdate = new Date().getTime();
+        // var datetime = "Last Sync: " + currentdate.getDate() + "/"+(currentdate.getMonth()+1) 
+        //         + "/" + currentdate.getFullYear() + " @ " 
+        //         + currentdate.getHours() + ":" 
+        //         + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+        Games.insert({name: "test", date: currentdate});
+        var newGame = Games.findOne({date: currentdate})
         console.log(newGame);
         Dice.insert({type: "d6", sides: 6, game: newGame.name, date: currentdate})
-        console.log(Dice.findOne({game: "test"}))
+        console.log(Dice.findOne({date: currentdate}))
         }
     });
     
@@ -24,12 +24,6 @@ if (Meteor.isClient) {
     Template.allgames.games = function () {
       return Games.find({});
     };
-    
-    
-  Template.hello.greeting = function () {
-    return "Welcome to first_roll.";
-  }; 
-
 
   Template.die.events({
         'click input.roll': function () {
@@ -65,12 +59,12 @@ if (Meteor.isServer) {
     //     }
     
 
-    if (Dice.find().count() === 0) {
-        var types = ["d6", "d8", "d4"];
-        var sideCount = [6, 8, 4];
-        for (var i = 0; i < types.length; i++) 
-            Dice.insert({type: types[i], sides: sideCount[i], result: ""});
-    }
+    // if (Dice.find().count() === 0) {
+    //     var types = ["d6", "d8", "d4"];
+    //     var sideCount = [6, 8, 4];
+    //     for (var i = 0; i < types.length; i++) 
+    //         Dice.insert({type: types[i], sides: sideCount[i], result: ""});
+    // }
     
   });
 }

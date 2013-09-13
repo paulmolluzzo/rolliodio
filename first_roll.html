@@ -3,22 +3,14 @@
 </head>
 
 <body>
-  {{> hello}}
   {{> newgame}}
   {{> list}}
   {{> alldice}}
 </body>
 
-<template name="hello">
-  <div class="hello">
-    <h1>Hello World!</h1>
-    {{greeting}}
-  </div>
-</template>
-
 <template name="newgame">
-    <div class="newgame">
-        <input type="button" class="generate" value="Create New Game">
+    <div class="newgame container sixteen-columns">
+        <input type="button" class="generate container eight-columns" value="Create New Die">
     </div>
 </template>
 
@@ -45,12 +37,12 @@
 </template>
 
 <template name="die">
-    <div class="single-die {{type}}">
-        <p>Date: {{date}}</p>
-        <p>Game: {{game}}</p>
-        <p>Sides: {{sides}}</p>
-        <p>Result: {{result}}</p>
-        <input type="button" class="roll">
+    <div class="single-die container sixteen columns {{type}}">
+        <p class="three columns offset-by-one">Date: {{date}}</p>
+        <p class="three columns">Game: {{game}}</p>
+        <p class="three columns">Sides: {{sides}}</p>
+        <p class="three columns">Result: {{result}}</p>
+        <input type="button" class="roll three columns" value="Roll">
     </div>
 </template>
 

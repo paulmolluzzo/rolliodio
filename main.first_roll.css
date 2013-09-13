@@ -1,0 +1,5 @@
+/* CSS declarations go here */
+div.newgame.container.sixteen-columns {padding-top: 50px;}
+.single-die {padding-top:1em;}
+.single-die p {padding-top:.5em;}
+.single-die:nth-child(even) {background-color:#eee;}
