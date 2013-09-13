@@ -19,13 +19,8 @@ if (Meteor.isClient) {
 
   Template.die.events({
         'click input.roll': function () {
-          Session.set("rolled_die", this._id);
-          var rolling = Dice.findOne(Session.get("rolled_die"));
-          console.log(rolling.sides);
-          var e = Math.floor(Math.random()*rolling.sides + 1);
-          // Dice.update(Session.get("rolled_die"), {$inc: {score: 5}});
-          rolling.result = e;
-          Dice.update({_id:rolling._id}, {$set:{result:e}});
+          var e = Math.floor(Math.random()*this.sides + 1);
+          Dice.update({_id:this._id}, {$set:{result:e}});
       }
   });
 }
