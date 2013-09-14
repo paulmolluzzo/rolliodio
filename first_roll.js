@@ -5,24 +5,45 @@ if (Meteor.isClient) {
     
     Template.newgame.events({
         'click input.generate': function(){
+        // Make a Timestamp
         var currentdate = new Date().getTime();
-        // var datetime = "Last Sync: " + currentdate.getDate() + "/"+(currentdate.getMonth()+1) 
-        //         + "/" + currentdate.getFullYear() + " @ " 
-        //         + currentdate.getHours() + ":" 
-        //         + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-        Games.insert({name: "test", date: currentdate});
-        var newGame = Games.findOne({date: currentdate})
-        console.log(newGame);
-        Dice.insert({type: "d6", sides: 6, game: newGame.name, date: currentdate})
-        console.log(Dice.findOne({date: currentdate}))
+        
+        // Create a new game, use the ID to make a hash for the game name
+        var newId = Games.insert({date: currentdate});
+        var newHash = newId.substring(0, 6);
+        
+        
+        
+        // Check to make sure it's unique
+        // If it's not, try again
+        
+        var tryToAdd = Games.find({name: newHash}, {limit: 1}).count();
+        console.log(tryToAdd);
+        
+        if (tryToAdd != 0) {
+            console.log("Something exists")
+        } else {
+            Games.update({_id: newId}, {$set:{name:newHash}});
+        }
+        
+        // Make the newly created game "current" for the session
+         Session.set("current_game", newHash);
+        
+        // Create a new die and assign it to that game
+        Dice.insert({type: "d6", sides: 6, game: newHash, date: currentdate})
+        
         }
     });
     
     Template.alldice.dice = function () {
-      return Dice.find({}, {sort: {date: -1}});
-    };
-    Template.allgames.games = function () {
-      return Games.find({});
+        if (Session.get("current_game") === ""){
+            return Dice.find({}, {sort: {date: -1}});
+        } else {
+            var currentId = Session.get("current_game");
+            return Dice.find({game: currentId});
+        }
+        
+      
     };
 
   Template.die.events({
@@ -31,6 +52,16 @@ if (Meteor.isClient) {
           Dice.update({_id:this._id}, {$set:{result:e}});
       }
   });
+  
+  Template.newdie.events({
+      'click input.generatedie': function(){
+      var currentdate = new Date().getTime();
+      var currentId = Session.get("current_game");
+      Dice.insert({type: "d6", sides: 6, game: currentId, date: currentdate})
+      console.log(Dice.findOne({date: currentdate}))
+      }
+  });
+  
 }
 
 if (Meteor.isServer) {

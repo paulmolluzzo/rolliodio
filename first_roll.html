@@ -10,7 +10,7 @@
 
 <template name="newgame">
     <div class="newgame container sixteen-columns">
-        <input type="button" class="generate container eight-columns" value="Create New Die">
+        <input type="button" class="generate container eight-columns" value="Create New Game">
     </div>
 </template>
 
@@ -25,6 +25,7 @@
 <template name="game">
   <div class="game">
     <span class="name">{{name}}</span>
+    <span class="name">{{date}}</span>
   </div>
 </template>
 
@@ -32,7 +33,8 @@
     <div class="all-dice">
         {{#each dice}}
           {{> die}}
-        {{/each}}        
+        {{/each}}  
+        {{> newdie}}      
     </div>
 </template>
 
@@ -46,10 +48,8 @@
     </div>
 </template>
 
-<template name="allgames">
-    <div class="all-games">
-        {{#each games}}
-          {{> game}}
-        {{/each}}        
+<template name="newdie">
+    <div class="newdie container sixteen-columns">
+        <input type="button" class="generatedie container eight-columns" value="Add another Die">
     </div>
 </template>
