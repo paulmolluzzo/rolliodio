@@ -46,24 +46,12 @@ if (Meteor.isClient) {
     
     Template.newgame.events({
         'click input.generate': function(){
-        // Make a Timestamp
-        var currentdate = new Date().getTime();
-        
-        // Create a new game, use the ID to make a hash for the game name
+        var currentdate = new Date().getTime();        
         var newId = Games.insert({date: currentdate});
         var modifiedId = newId;
         var newHash = modifiedId.substring(0, 6);
         
-        
         validCreation(newId, newHash, modifiedId);
-        // if (Validation.valid_name(newName)) {
-        //   Games.update({_id: newId}, {$set:{name:newHash}});
-        // } else {
-        //     modifiedId = newId++;
-        //     function
-        // }
-            
-        // }
         
         // Make the newly created game "current" for the session
          Session.set("current_game", newId);
@@ -102,14 +90,16 @@ if (Meteor.isClient) {
           }
       },
       
-    //   'click input.roll-all': function () {
-    //       var currentId = Session.get("current_game");
-    //       var currentDice = Dice.find({_id: currentId});
-    //       console.log(currentDice);          // 
-    //       for (i=0; i< currentDice.length; i++) {
-    //            
-    //       }
-    // }
+      'click input.roll-all': function () {
+          var currentId = Session.get("current_game");
+          var currentDice = Dice.find({game: currentId});
+          var count = 0;
+          currentDice.forEach(function (die) {
+            rollDie(die);
+            console.log("Game id for die number " + count + ": " + die.game);
+            count += 1;
+          });
+    }
       
       
     });
@@ -142,7 +132,7 @@ if (Meteor.isServer) {
       // Games.remove({});
       // Dice.remove({});
       
-      // Allows insertion into DB from client console
+      // Allows insertion, update, removal within DB from client console
       Dice.allow({
         insert: function () { return true; },
         update: function () { return true; },
@@ -152,22 +142,6 @@ if (Meteor.isServer) {
         insert: function () { return true; },
         update: function () { return true; }
       });
-      
-    // if (Games.find().count() === 0) {
-    //         var names = ["lqkwje",
-    //                     "lakjdf",
-    //                     "asldkfja"]
-    //         for (var i = 0; i < names.length; i++) 
-    //             Games.insert({name: names[i]});
-    //     }
-    
-
-    // if (Dice.find().count() === 0) {
-    //     var types = ["d6", "d8", "d4"];
-    //     var sideCount = [6, 8, 4];
-    //     for (var i = 0; i < types.length; i++) 
-    //         Dice.insert({type: types[i], sides: sideCount[i], result: ""});
-    // }
     
   });
 }
