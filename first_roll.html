@@ -4,6 +4,7 @@
 
 <body>
   {{> newgame}}
+  {{> currentgame}}
   {{> list}}
   {{> alldice}}
 </body>
@@ -14,19 +15,27 @@
     </div>
 </template>
 
+<template name="currentgame">
+    <div class="currentgame single-die container sixteen columns">
+        {{#each games}}
+        <h3 class="four columns">Game: {{name}}</h3>
+        <!-- Change the game name -->
+        <input id="update_game_name" class="three columns" type="text" placeholder="{{name}}" />
+        <input type="button" class="change-name one columns" value="/" />
+        <!-- Invite friends -->
+        
+        <!-- Roll all dice -->
+        <!-- <input type="button" class="roll-all one columns" value="#" /> -->
+        {{/each}}
+    </div>  
+</template>
+
 <template name="list">
     <div class="list">
       {{#each games}}
         {{> game}}
       {{/each}}
     </div>
-</template>
-
-<template name="game">
-  <div class="game">
-    <span class="name">{{name}}</span>
-    <span class="name">{{date}}</span>
-  </div>
 </template>
 
 <template name="alldice">
@@ -40,7 +49,8 @@
 
 <template name="die">
     <div class="single-die container sixteen columns {{type}}">
-        <p class="three columns offset-by-one">Date: {{date}}</p>
+        <input type="button" class="delete-die one columns" value="X">
+        <p class="three columns">Date: {{date}}</p>
         <p class="three columns">Game: {{game}}</p>
         <p class="three columns">Sides: {{sides}}</p>
         <p class="three columns">Result: {{result}}</p>

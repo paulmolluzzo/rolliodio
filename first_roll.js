@@ -1,6 +1,12 @@
 Dice = new Meteor.Collection("dice");
 Games = new Meteor.Collection("games");
 
+var rollDie = function (t) {
+    var e = Math.floor(Math.random()*t.sides + 1);
+    Dice.update({_id:t._id}, {$set:{result:e}});
+}
+
+
 if (Meteor.isClient) {
     
     Template.newgame.events({
@@ -17,14 +23,14 @@ if (Meteor.isClient) {
         // Check to make sure it's unique
         // If it's not, try again
         
-        var tryToAdd = Games.find({name: newHash}, {limit: 1}).count();
-        console.log(newId);
+        // var tryToAdd = Games.find({name: newHash});
+        // console.log(tryToAdd);
         
-        if (tryToAdd != 0) {
-            console.log("Something exists")
-        } else {
+        // if (tryToAdd != 0) {
+        //     console.log("Something exists")
+        // } else {
             Games.update({_id: newId}, {$set:{name:newHash}});
-        }
+        // }
         
         // Make the newly created game "current" for the session
          Session.set("current_game", newId);
@@ -45,12 +51,44 @@ if (Meteor.isClient) {
         
       
     };
+    
+    Template.currentgame.games = function() {
+        var currentId = Session.get("current_game");
+        return Games.find({_id: currentId});
+    };
+    
+    Template.currentgame.events({
+        'click input.change-name': function () {
+          var newName = document.getElementById("update_game_name").value;
+          console.log(newName);
+          Games.update({_id:this._id}, {$set:{name:newName}});
+      },
+      
+    //   'click input.roll-all': function () {
+    //       var currentId = Session.get("current_game");
+    //       var currentDice = Dice.find({_id: currentId});
+    //       console.log(currentDice);          // 
+    //       for (i=0; i< currentDice.length; i++) {
+    //            
+    //       }
+    // }
+      
+      
+    });
 
   Template.die.events({
-        'click input.roll': function () {
-          var e = Math.floor(Math.random()*this.sides + 1);
-          Dice.update({_id:this._id}, {$set:{result:e}});
-      }
+      //   'click input.roll': function () {
+      //     var e = Math.floor(Math.random()*this.sides + 1);
+      //     Dice.update({_id:this._id}, {$set:{result:e}});
+      // }
+      'click input.roll': function() {
+          rollDie(this);
+      },
+      
+      'click input.delete-die': function () { // <-- here it is
+          Dice.remove(this._id);
+        },
+      
   });
   
   Template.newdie.events({
@@ -74,7 +112,8 @@ if (Meteor.isServer) {
       // Allows insertion into DB from client console
       Dice.allow({
         insert: function () { return true; },
-        update: function () { return true; }
+        update: function () { return true; },
+        remove: function () { return true; }
       });
       Games.allow({
         insert: function () { return true; },
