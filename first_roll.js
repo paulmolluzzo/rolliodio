@@ -6,6 +6,30 @@ var rollDie = function (t) {
     Dice.update({_id:t._id}, {$set:{result:e}});
 }
 
+Validation = {
+  clear: function () { 
+    return Session.set("error", undefined); 
+  },
+  set_error: function (message) {
+    return Session.set("error", message);
+  },
+  valid_name: function (name) {
+    this.clear();
+    if (name.length == 0) {
+      this.set_error("Name can't be blank");
+      return false;
+    } else if (this.game_exists(name)) {
+      this.set_error("Game already exists");
+      return false;
+    } else {
+      return true;
+    }
+  },
+  game_exists: function(name) {
+    return Games.findOne({name: name});
+  }
+};
+
 
 if (Meteor.isClient) {
     
@@ -48,8 +72,6 @@ if (Meteor.isClient) {
             var currentId = Session.get("current_game");
             return Dice.find({game: currentId});
         }
-        
-      
     };
     
     Template.currentgame.games = function() {
@@ -57,11 +79,18 @@ if (Meteor.isClient) {
         return Games.find({_id: currentId});
     };
     
+    Template.currentgame.error = function () {
+      return Session.get("error");
+      }
+    
     Template.currentgame.events({
         'click input.change-name': function () {
-          var newName = document.getElementById("update_game_name").value;
+          var newName = document.getElementById("update_game_name").value.trim();
           console.log(newName);
-          Games.update({_id:this._id}, {$set:{name:newName}});
+          // Games.update({_id:this._id}, {$set:{name:newName}});
+          if (Validation.valid_name(newName)) {
+            Games.update({_id:this._id}, {$set:{name:newName}});
+          }
       },
       
     //   'click input.roll-all': function () {
@@ -77,18 +106,13 @@ if (Meteor.isClient) {
     });
 
   Template.die.events({
-      //   'click input.roll': function () {
-      //     var e = Math.floor(Math.random()*this.sides + 1);
-      //     Dice.update({_id:this._id}, {$set:{result:e}});
-      // }
       'click input.roll': function() {
           rollDie(this);
       },
-      
+
       'click input.delete-die': function () { // <-- here it is
           Dice.remove(this._id);
-        },
-      
+        }
   });
   
   Template.newdie.events({

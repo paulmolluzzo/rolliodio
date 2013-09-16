@@ -20,6 +20,11 @@
         {{#each games}}
         <h3 class="four columns">Game: {{name}}</h3>
         <!-- Change the game name -->
+        {{#if error}}
+          <span id="error" style="color: red;">
+            {{error}} 
+          </span>
+        {{/if}}
         <input id="update_game_name" class="three columns" type="text" placeholder="{{name}}" />
         <input type="button" class="change-name one columns" value="/" />
         <!-- Invite friends -->
