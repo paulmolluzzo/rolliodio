@@ -4,7 +4,7 @@ Games = new Meteor.Collection("games");
 var rollDie = function (t) {
     var e = Math.floor(Math.random()*t.sides + 1);
     Dice.update({_id:t._id}, {$set:{result:e}});
-}
+};
 
 Validation = {
   clear: function () { 
@@ -30,6 +30,17 @@ Validation = {
   }
 };
 
+var validCreation = function(i, h, m) {
+    if (Validation.valid_name(h)) {
+      Games.update({_id: i}, {$set:{name:h}});
+      console.log("First Try")
+    } else {
+        console.log("Found a match and trying again")
+        m = (Math.floor(Math.random()*9+1)) + i;
+        h = m.substring(0, 6);
+        validCreation(i, h, m);
+    }
+};
 
 if (Meteor.isClient) {
     
@@ -40,20 +51,18 @@ if (Meteor.isClient) {
         
         // Create a new game, use the ID to make a hash for the game name
         var newId = Games.insert({date: currentdate});
-        var newHash = newId.substring(0, 6);
+        var modifiedId = newId;
+        var newHash = modifiedId.substring(0, 6);
         
         
-        
-        // Check to make sure it's unique
-        // If it's not, try again
-        
-        // var tryToAdd = Games.find({name: newHash});
-        // console.log(tryToAdd);
-        
-        // if (tryToAdd != 0) {
-        //     console.log("Something exists")
+        validCreation(newId, newHash, modifiedId);
+        // if (Validation.valid_name(newName)) {
+        //   Games.update({_id: newId}, {$set:{name:newHash}});
         // } else {
-            Games.update({_id: newId}, {$set:{name:newHash}});
+        //     modifiedId = newId++;
+        //     function
+        // }
+            
         // }
         
         // Make the newly created game "current" for the session
