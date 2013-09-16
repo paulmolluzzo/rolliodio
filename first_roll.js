@@ -18,7 +18,7 @@ if (Meteor.isClient) {
         // If it's not, try again
         
         var tryToAdd = Games.find({name: newHash}, {limit: 1}).count();
-        console.log(tryToAdd);
+        console.log(newId);
         
         if (tryToAdd != 0) {
             console.log("Something exists")
@@ -27,10 +27,10 @@ if (Meteor.isClient) {
         }
         
         // Make the newly created game "current" for the session
-         Session.set("current_game", newHash);
+         Session.set("current_game", newId);
         
         // Create a new die and assign it to that game
-        Dice.insert({type: "d6", sides: 6, game: newHash, date: currentdate})
+        Dice.insert({type: "d6", sides: 6, game: newId, date: currentdate})
         
         }
     });
