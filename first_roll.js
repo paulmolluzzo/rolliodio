@@ -2,8 +2,15 @@ Dice = new Meteor.Collection("dice");
 Games = new Meteor.Collection("games");
 
 var rollDie = function (t) {
+    var currentDate = new Date(); 
+    var dateTime = currentDate.getDate() + "/"
+                    + (currentDate.getMonth()+1)  + "/" 
+                    + currentDate.getFullYear() + " @ "  
+                    + currentDate.getHours() + ":"  
+                    + currentDate.getMinutes() + ":" 
+                    + currentDate.getSeconds();
     var e = Math.floor(Math.random()*t.sides + 1);
-    Dice.update({_id:t._id}, {$set:{result:e}});
+    Dice.update({_id:t._id}, {$set:{result:e, rolled:dateTime}});
 };
 
 Validation = {
@@ -58,18 +65,42 @@ if (Meteor.isClient) {
         
         // Create a new die and assign it to that game
         Dice.insert({type: "d6", sides: 6, game: newId, date: currentdate})
-        
+
         }
     });
     
     Template.alldice.dice = function () {
-        if (Session.get("current_game") === ""){
+        if (Session.get("current_game") === "0"){
             return Dice.find({}, {sort: {date: -1}});
         } else {
             var currentId = Session.get("current_game");
             return Dice.find({game: currentId});
+            // Meteor.defer = function() {
+            //   var currentDice = Dice.find({{game: currentId}}).fetch();
+            //   for( i=0; i<currentDice.length(); i++) {
+            //       var dieSides = currentDice[i].sides;
+            //       var dieId = currentDice[i]._id;
+            //       var targetSelector = document.getElementById(dieId);
+            //       targetSelector.val(dieSides);
+            //   }  
+            // };
         }
     };
+    
+    Template.alldice.updateselect = function() {
+        Meteor.defer(function() {
+            var currentId = Session.get("current_game")
+            var currentDice = Dice.find({game: currentId}).fetch();
+            console.log(currentDice.length);
+            for( i=0; i<currentDice.length; i++) {
+                  var dieSides = currentDice[i].sides;
+                  var dieId = currentDice[i]._id;
+                  var targetSelector = document.getElementById(dieId);
+                  console.log(targetSelector[i]);
+                  targetSelector[dieSides-2].setAttribute('selected', 'selected');
+              }
+        });
+    }
     
     Template.currentgame.games = function() {
         var currentId = Session.get("current_game");
@@ -84,11 +115,15 @@ if (Meteor.isClient) {
         'click input.change-name': function () {
           var newName = document.getElementById("update_game_name").value.trim();
           console.log(newName);
-          // Games.update({_id:this._id}, {$set:{name:newName}});
           if (Validation.valid_name(newName)) {
             Games.update({_id:this._id}, {$set:{name:newName}});
           }
       },
+      
+      'click input.exit-game': function () {
+          console.log("pushed")
+        Session.set("current_game", null)
+        },
       
       'click input.roll-all': function () {
           var currentId = Session.get("current_game");
@@ -96,7 +131,6 @@ if (Meteor.isClient) {
           var count = 0;
           currentDice.forEach(function (die) {
             rollDie(die);
-            console.log("Game id for die number " + count + ": " + die.game);
             count += 1;
           });
     }
@@ -115,11 +149,10 @@ if (Meteor.isClient) {
   });
   
   Template.newdie.events({
-      'click input.generatedie': function(){
+      'click input.generate-die': function(){
       var currentdate = new Date().getTime();
       var currentId = Session.get("current_game");
-      Dice.insert({type: "d6", sides: 6, game: currentId, date: currentdate})
-      console.log(Dice.findOne({date: currentdate}))
+      Dice.insert({type: "d6", sides: 6, game: currentId});
       }
   });
   
