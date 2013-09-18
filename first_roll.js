@@ -100,7 +100,7 @@ if (Meteor.isClient) {
     
     Template.currentgame.error = function () {
       return Session.get("error");
-      }
+      };
     
     Template.currentgame.events({
         'change #update_game_name': function () {
@@ -123,8 +123,6 @@ if (Meteor.isClient) {
             count += 1;
           });
     }
-      
-      
     });
 
   Template.die.events({
@@ -142,6 +140,53 @@ if (Meteor.isClient) {
             Dice.update({_id:this._id}, {$set:{sides:v}});
         }
   });
+  
+  Template.die.rendered = function() {
+      $(".single-die").swipe( {
+              swipeStatus:function(event, phase, direction, distance, fingers)
+              {
+                  var threshold = 200;
+                  $this = $(this);
+                //Here we can check the:
+                //phase : 'start', 'move', 'end', 'cancel'
+                //direction : 'left', 'right', 'up', 'down'
+                //distance : Distance finger is from initial touch point in px
+                //duration : Length of swipe in MS 
+                //fingerCount : the number of fingers used   
+
+            if (direction=="left"){
+                $this.css("margin-left",(distance*-0.5))
+                
+                if (phase=="end" && distance>threshold){
+                    $this.css("margin-left", 0);
+                    alert(distance)
+                } else if (phase=="end"){
+                    $this.css("margin-left", 0);
+                    console.log(distance)    
+                }         
+            }
+            
+            if (direction=="right"){
+                $this.css("margin-left",(distance/2))
+                
+                if (phase=="end" && distance>threshold){
+                    $this.css("margin-left", 0);
+                    alert(distance)
+                } else if (phase=="end"){
+                    $this.css("margin-left", 0);
+                    console.log(distance)    
+                }
+                    
+            }
+            
+                
+            }
+
+
+              
+              
+            });
+  };
   
   Template.newdie.events({
       'click input.generate-die': function(){

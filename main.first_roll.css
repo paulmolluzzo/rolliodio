@@ -1,5 +1,135 @@
-/* CSS declarations go here */
-div.newgame.container.sixteen-columns {padding-top: 50px;}
-.single-die {padding-top:1em;}
-.single-die p {padding-top:.5em;}
-.single-die:nth-child(even) {background-color:#eee;}
+body {
+    background-color: #2F4F4F;
+    color: #fff;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+
+div.newgame.container.sixteen-columns {
+    padding-top: 50px;
+}
+.single-die {
+    border-top: 1px solid #fff;
+    height: auto;
+    padding:20px;
+    width: auto;
+}
+
+.single-die p {
+    display:inline-block;
+}
+
+.single-die:nth-child(even) {
+    background-color: rgba(255,255,255,0.3);
+}
+.single-die:last-child {
+    border-bottom: 1px solid #fff;
+}
+
+
+.delete-die, .sides, .side-selector, .result, .roll {
+    float: left;
+}
+
+.roll {
+    float: right;
+}
+
+.delete-die {
+    border-color:none;
+    border:0px;
+    border:none;
+    border-image-width:0;
+    box-shadow:none;
+    background-color: #f00;
+    color:#fff;
+    font-size: 2em;
+    height: 100%;
+    width: 10%;
+}
+
+.single-die select {
+   background: transparent;
+   color: #fff;
+   width: 10%;
+   padding-top: 10px;
+   padding-left: 15px;
+   font-size: 1.5em;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.sides {
+   background: transparent;
+   color: #fff;
+   width: 40%;
+   padding-top: 10px;
+   font-size: 1.5em;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.result {
+   background: transparent;
+   color: #fff;
+   width: 25%;
+   padding-top: 10px;
+   padding-left: 15px;
+   font-size: 1.5em;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.roll {
+    border-color:none;
+    border:0px;
+    border:none;
+    border-image-width:0;
+    box-shadow:none;
+    background-color: #0f0;
+    color:#fff;
+    font-size: 2em;
+    height: 100%;
+    width: 10%;
+}
+
+.d2 {}
+.d3 {}
+.d4 {}
+.d5 {}
+.d6 {}
+.d7 {}
+.d8 {}
+.d9 {}
+.d10 {}
+.d11 {}
+.d12 {}
+.d13 {}
+.d14 {}
+.d15 {}
+.d16 {}
+.d17 {}
+.d18 {}
+.d19 {}
+.d20 {}
+.d21 {}
+.d22 {}
+.d23 {}
+.d24 {}
+.d25 {}
+.d26 {}
+.d27 {}
+.d28 {}
+.d29 {}
