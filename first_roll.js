@@ -22,7 +22,11 @@ var setSideSelector = function() {
           var targetSelector = document.getElementById(dieId);
           targetSelector[dieSides-2].setAttribute('selected', 'selected');
       }
-},
+};
+
+var removeDie = function(targetid) {
+    Dice.remove({_id: targetid});
+};
 
 Validation = {
   clear: function () { 
@@ -142,42 +146,30 @@ if (Meteor.isClient) {
   });
   
   Template.die.rendered = function() {
-      $(".single-die").swipe( {
-              swipeStatus:function(event, phase, direction, distance, fingers)
-              {
-                  var threshold = 200;
-                  $this = $(this);
-                //Here we can check the:
-                //phase : 'start', 'move', 'end', 'cancel'
-                //direction : 'left', 'right', 'up', 'down'
-                //distance : Distance finger is from initial touch point in px
-                //duration : Length of swipe in MS 
-                //fingerCount : the number of fingers used   
-
-            if (direction=="left"){
-                $this.css("margin-left",(distance*-0.5))
+      var originalMargin = $(".die-wrap").css("margin-left");
+      var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
+      var ogMarginNum = parseInt(parsedMargin);
+      $(".die-wrap").swipe( {
+              swipeStatus:function(event, phase, direction, distance, fingers){
+                $this = $(this);
+                var targetId = $this.attr("data-id");
+                var threshold = 200;
                 
-                if (phase=="end" && distance>threshold){
-                    $this.css("margin-left", 0);
-                    alert(distance)
-                } else if (phase=="end"){
-                    $this.css("margin-left", 0);
-                    console.log(distance)    
-                }         
-            }
-            
-            if (direction=="right"){
-                $this.css("margin-left",(distance/2))
-                
-                if (phase=="end" && distance>threshold){
-                    $this.css("margin-left", 0);
-                    alert(distance)
-                } else if (phase=="end"){
-                    $this.css("margin-left", 0);
-                    console.log(distance)    
+                if (direction=="left"){
+                    $this.css("margin-left",ogMarginNum + (distance*-0.5) + "px");
+                    if ( distance>threshold){
+                        $this.css("margin-left", originalMargin);
+                        rollDie(Dice.findOne({_id:targetId}));
+                    }
                 }
-                    
-            }
+            
+                if (direction=="right"){
+                    $this.css("margin-left",ogMarginNum + (distance/2) + "px");
+                    if ( distance>threshold){
+                        $this.css("margin-left", originalMargin);
+                        $this.fadeOut('fast', function(){removeDie(targetId)});
+                    } 
+                }
             
                 
             }
@@ -185,7 +177,7 @@ if (Meteor.isClient) {
 
               
               
-            });
+            }).stop();
   };
   
   Template.newdie.events({
