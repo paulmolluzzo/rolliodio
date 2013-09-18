@@ -59,7 +59,6 @@
 <template name="die">
     <div class="single-die clearfix {{type}}">
         <div class="die-wrap clearfix" data-id="{{_id}}">
-            <input type="button" class="delete-die" value="Delete">
             <p class="sides">Number of sides:</p>
             <select id="{{_id}}" class="side-selector">
               <option value="2">Coin Flip</option>
@@ -92,7 +91,10 @@
               <option value="29">29</option>
             </select>
             <p class="result {{type}}">{{result}}</p>
-            <input type="button" class="roll" value="Roll">
+        </div>
+        <div class="delete-roll clearfix">
+        <input type="button" class="delete-die" value="Delete»»">
+        <input type="button" class="roll" value="««Roll It">
         </div>
     </div>
 </template>

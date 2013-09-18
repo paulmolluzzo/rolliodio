@@ -153,7 +153,7 @@ if (Meteor.isClient) {
               swipeStatus:function(event, phase, direction, distance, fingers){
                 $this = $(this);
                 var targetId = $this.attr("data-id");
-                var threshold = 200;
+                var threshold = 150;
                 
                 if (direction=="left"){
                     $this.css("margin-left",ogMarginNum + (distance*-0.5) + "px");
@@ -161,14 +161,19 @@ if (Meteor.isClient) {
                         $this.css("margin-left", originalMargin);
                         rollDie(Dice.findOne({_id:targetId}));
                     }
+                    if (phase=="end") {
+                        $this.animate({marginLeft: originalMargin});
+                    }
                 }
             
                 if (direction=="right"){
                     $this.css("margin-left",ogMarginNum + (distance/2) + "px");
                     if ( distance>threshold){
-                        $this.css("margin-left", originalMargin);
-                        $this.fadeOut('fast', function(){removeDie(targetId)});
+                        $this.parent().fadeOut('fast', function(){removeDie(targetId)});
                     } 
+                    if (phase=="end") {
+                        $this.animate({marginLeft: originalMargin});
+                    }
                 }
             
                 
