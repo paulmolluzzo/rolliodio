@@ -15,7 +15,7 @@ body {
 div.newgame.container.sixteen-columns {
     padding-top: 50px;
 }
-.single-die{border-top:1px solid #fff;height:63px;width:100%;}
+.single-die{border-top:1px solid #fff;height:60px;width:100%;}
 .single-die:nth-child(even){background-color:rgba(255,255,255,0.3);}
 .single-die:last-child{border-bottom:1px solid #fff;}
 .delete-die,.sides,.side-selector,.result{float:left;}
@@ -23,14 +23,15 @@ div.newgame.container.sixteen-columns {
 
 .delete-die{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#f00;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:left;}
 .roll{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#0f0;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:right;}
-.delete-roll {margin-top:-65px;}
+.delete-roll {margin-top:-62px;}
 
 .die-wrap {
     background-color:#444;
     display:block;
     height:100%;
     position:relative;
-    width:100%;
+    margin: 0 auto;
+    width:99%;
     overflow:hidden;
     z-index:10000;
 }

@@ -211,7 +211,7 @@ if (Meteor.isClient) {
 
               
               
-            }).stop();
+            });
   };
   
   Template.newdie.events({
