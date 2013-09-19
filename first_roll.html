@@ -7,22 +7,39 @@
     <header>
         <h1></h1>
     </header>
-    
-    
-  {{> newgame}}
-  {{> currentgame}}
-  {{> alldice}}
+  {{#if currentGameIs "" }}
+    {{> home}}
+  {{else}}
+    {{> currentgame}}
+  {{/if}}
 </body>
-
-<template name="newgame">
-    <div class="newgame">
-        <input type="button" class="generate" value="Create New Game">
-    </div>
-</template>
 
 <template name="home">
     <div class="home">
-        <p>Something</p>
+        <h2>Roll dice with friends!</h2>
+        <p>Using <span>APPNAME</span> you can create and share virtual dice with friends. Dice rolled on one player's device automatically update every other players' screen.</p>
+        <p>Lost your dice for <em>Risk</em>? Want to start an epic game of D&amp;D?</p>
+        {{> newgame}}
+        {{> entergame}}
+    </div>
+</template>
+
+<template name="newgame">
+    <div class="new-game">
+        <input type="button" class="generate" value="Start a New Game!">
+    </div>
+</template>
+
+<template name="entergame">
+    <div class="enter-game">
+        <p>OR</p>
+        {{#if error}}
+          <span id="error" style="color: red;">
+            {{error}} 
+          </span>
+        {{/if}}
+        <input id="enter_game_name" type="text" placeholder="Join an Existing Game!" />
+        <input type="button" class="enter-game" value="»">
     </div>
 </template>
 
@@ -43,17 +60,12 @@
         <!-- Roll all dice -->
         <input type="button" class="roll-all" value="#" />
         {{/each}}
-        {{> newdie}}  
-    </div>  
-</template>
-
-<template name="alldice">
-    <div class="all-dice">
         {{#each dice}}
           {{> die}}
           {{ updateselect }}
-        {{/each}}  
-    </div>
+        {{/each}}
+        {{> newdie}}  
+    </div>  
 </template>
 
 <template name="die">

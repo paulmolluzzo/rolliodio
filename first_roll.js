@@ -34,6 +34,7 @@ Validation = {
   },
   set_error: function (message) {
     return Session.set("error", message);
+    console.log("message");
   },
   valid_name: function (name) {
     this.clear();
@@ -65,6 +66,15 @@ var validCreation = function(i, h, m) {
 };
 
 if (Meteor.isClient) {
+    Meteor.startup(function () {
+        Session.set("current_game", "");
+        Session.set("error", null);
+    });
+    
+    
+    Handlebars.registerHelper('currentGameIs',function(game){
+        return Session.get("current_game") == game;
+    });
     
     Template.newgame.events({
         'click input.generate': function(){
@@ -84,7 +94,26 @@ if (Meteor.isClient) {
         }
     });
     
-    Template.alldice.dice = function () {
+    Template.entergame.events({
+        'click input.enter-game': function(){
+        var n = document.getElementById('enter_game_name').value;
+        var g = Games.findOne({name:n});
+        var e = "That game doesn't exist."
+        
+        if (Validation.game_exists(n)){
+            Validation.clear();
+            Session.set("current_game", g._id);
+        } else {
+            Session.set("error", e)
+        }
+    }
+    });
+    
+    Template.entergame.error = function() {
+        return  Session.get("error")
+    }
+    
+    Template.currentgame.dice = function () {
         if (Session.get("current_game") === "0"){
             return Dice.find({}, {sort: {date: -1}});
         } else {
@@ -93,7 +122,7 @@ if (Meteor.isClient) {
         }
     };
     
-    Template.alldice.updateselect = function() {
+    Template.currentgame.updateselect = function() {
         Meteor.defer(function(){setSideSelector();});
     };
     
@@ -115,7 +144,7 @@ if (Meteor.isClient) {
       },
       
       'click input.exit-game': function () {
-        Session.set("current_game", null)
+        Session.set("current_game", "")
         },
       
       'click input.roll-all': function () {
@@ -189,6 +218,7 @@ if (Meteor.isClient) {
       'click input.generate-die': function(){
       var currentdate = new Date().getTime();
       var currentId = Session.get("current_game");
+      console.log(Session.get("current_game"));
       Dice.insert({type: "d6", sides: 6, game: currentId});
       }
   });
