@@ -25,33 +25,10 @@ div.newgame.container.sixteen-columns {
 .roll{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#0f0;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:right;}
 .delete-roll {margin-top:-62px;}
 
-.die-wrap {
-    background-color:#444;
-    display:block;
-    height:100%;
-    position:relative;
-    margin: 0 auto;
-    width:99%;
-    overflow:hidden;
-    z-index:10000;
-}
-
-.single-die select {
-   background: transparent;
-   color: #fff;
-   width: 10%;
-   padding: 20px;
-   font-size: 1.5em;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: auto;
-   -webkit-appearance: none;
-   text-align:center;
-}
+.die-wrap{background-color:#2F4F4F;display:block;height:100%;position:relative;margin:0 auto;width:99%;overflow:hidden;z-index:10000;}
 
 .sides {
-   background: transparent;
+   background: #778899;
    color: #fff;
    width: 30%;
    padding: 20px;
@@ -63,6 +40,35 @@ div.newgame.container.sixteen-columns {
    -webkit-appearance: none;
    text-align:center;
 }
+
+.single-die select {
+   background: #778899;
+   color: #fff;
+   margin-top:-1px;
+   width: 10%;
+   padding: 20px;
+   font-size: 1.5em;
+   /*line-height: 1;*/
+   border: 0;
+   border-radius: 0;
+   height: auto;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.sides:after {
+    content: "";
+    position: absolute;
+    left: 43%;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border-top: 36px solid transparent;
+    border-left: 44px solid #778899;
+    border-bottom: 36px solid transparent;
+}
+
+
 
 .result {
    background: transparent;
