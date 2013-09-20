@@ -19,6 +19,10 @@
         <h2>Roll dice with friends!</h2>
         <p>Using <span>APPNAME</span> you can create and share virtual dice with friends. Dice rolled on one player's device automatically update every other players' screen.</p>
         <p>Lost your dice for <em>Risk</em>? Want to start an epic game of D&amp;D?</p>
+        {{#if nogame}}
+          <p class="error bad-url">Sorry! There was no game called "{{nogame}}."
+          </p>
+        {{/if}}
         {{> newgame}}
         {{> entergame}}
     </div>
@@ -34,11 +38,11 @@
     <div class="enter-game">
         <p>OR</p>
         {{#if error}}
-          <span id="error" style="color: red;">
+          <p class="error bad-entry">
             {{error}} 
-          </span>
+          </p>
         {{/if}}
-        <input id="enter_game_name" type="text" placeholder="Join an Existing Game!" />
+        <input id="enter-game-name" type="text" placeholder="Join an Existing Game!" />
         <input type="button" class="enter-game" value="»">
     </div>
 </template>
@@ -50,11 +54,11 @@
         <h3 class="four columns">Your game is called:</h3>
         <!-- Change the game name -->
         {{#if error}}
-          <span id="error" style="color: red;">
+          <span id="error bad-update-name">
             {{error}} 
           </span>
         {{/if}}
-        <input id="update_game_name" type="text" placeholder="{{name}}" />
+        <input id="update-game-name" type="text" placeholder="{{name}}" />
         <!-- Invite friends -->
         
         <!-- Roll all dice -->

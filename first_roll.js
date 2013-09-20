@@ -53,10 +53,12 @@ Validation = {
   }
 };
 
-var validCreation = function(i, h, m) {
+var validCreation = function(i, h, m, d) {
     if (Validation.valid_name(h)) {
-      Games.update({_id: i}, {$set:{name:h}});
-      console.log("First Try")
+        Games.update({_id: i}, {$set:{name:h}});
+        Session.set("current_game", i);
+        window.location.hash = "/" + h;
+        Dice.insert({type: "d6", sides: 6, game: i, date: d})
     } else {
         console.log("Found a match and trying again")
         m = (Math.floor(Math.random()*9+1)) + i;
@@ -69,8 +71,21 @@ if (Meteor.isClient) {
     Meteor.startup(function () {
         Session.set("current_game", "");
         Session.set("error", null);
+        Session.set("no_game", null);
+        var p = location.hash.substring(2);
+        if (p.length === 0) {
+            window.location.hash = "#/"
+        } else {
+            var g = Games.findOne({game:p});
+            if (g === undefined) {
+                window.location.hash = "#/"
+                Session.set("no_game", p)
+            } else {
+                Session.set("current_game", g._id);
+            }
+        }
+        
     });
-    
     
     Handlebars.registerHelper('currentGameIs',function(game){
         return Session.get("current_game") == game;
@@ -82,27 +97,22 @@ if (Meteor.isClient) {
         var newId = Games.insert({date: currentdate});
         var modifiedId = newId;
         var newHash = modifiedId.substring(0, 6);
-        
+        Session.set("no_game", null);
         validCreation(newId, newHash, modifiedId);
-        
-        // Make the newly created game "current" for the session
-         Session.set("current_game", newId);
-        
-        // Create a new die and assign it to that game
-        Dice.insert({type: "d6", sides: 6, game: newId, date: currentdate})
-
         }
     });
     
     Template.entergame.events({
         'click input.enter-game': function(){
-        var n = document.getElementById('enter_game_name').value;
+        var n = document.getElementById('enter-game-name').value;
         var g = Games.findOne({name:n});
-        var e = "That game doesn't exist."
-        
+        var e = "That game doesn't exist.";
+        Session.set("error", null);
+        Session.set("no_game", null);
         if (Validation.game_exists(n)){
             Validation.clear();
             Session.set("current_game", g._id);
+            window.location.replace(Meteor.absoluteUrl() +"#/" + n);
         } else {
             Session.set("error", e)
         }
@@ -111,6 +121,10 @@ if (Meteor.isClient) {
     
     Template.entergame.error = function() {
         return  Session.get("error")
+    }
+    
+    Template.home.nogame = function() {
+        return  Session.get("no_game")
     }
     
     Template.currentgame.dice = function () {
@@ -137,14 +151,16 @@ if (Meteor.isClient) {
     
     Template.currentgame.events({
         'change #update_game_name': function () {
-          var newName = document.getElementById("update_game_name").value.trim();
+          var newName = document.getElementById("update-game-name").value.trim();
           if (Validation.valid_name(newName)) {
             Games.update({_id:this._id}, {$set:{name:newName}});
+            window.location.replace(Meteor.absoluteUrl() +"#/" + newName);
           }
       },
       
       'click input.exit-game': function () {
         Session.set("current_game", "")
+        window.location.hash = "/";
         },
       
       'click input.roll-all': function () {
@@ -170,7 +186,8 @@ if (Meteor.isClient) {
         'change select.side-selector': function() {
             var t = document.getElementById(this._id);
             var v = t.options[t.selectedIndex].value;
-            Dice.update({_id:this._id}, {$set:{sides:v}});
+            Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
+            setSideSelector();
         }
   });
   
