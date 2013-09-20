@@ -86,14 +86,14 @@ div.newgame.container.sixteen-columns {
 
 
 
-.d2 {}
-.d3 {}
-.d4 {}
-.d5 {}
-.d6 {}
-.d7 {}
-.d8 {}
-.d9 {}
+.d2  {}
+.d3  {}
+.d4  {}
+.d5  {}
+.d6  {}
+.d7  {}
+.d8  {}
+.d9  {}
 .d10 {}
 .d11 {}
 .d12 {}
@@ -114,3 +114,5 @@ div.newgame.container.sixteen-columns {
 .d27 {}
 .d28 {}
 .d29 {}
+    
+footer {position:fixed; bottom:5px;left:5px}

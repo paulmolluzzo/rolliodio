@@ -5,13 +5,18 @@
 
 <body>
     <header>
-        <h1></h1>
+        <h1>APPNAME</h1>
     </header>
   {{#if currentGameIs "" }}
     {{> home}}
   {{else}}
     {{> currentgame}}
   {{/if}}
+  <footer>
+      <div class="self-promo">
+          <a href="http://paul.molluzzo.com"><img class="logo" src="/logo.png"></a>
+      </div>
+  </footer>
 </body>
 
 <template name="home">
