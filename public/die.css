@@ -1,0 +1,225 @@
+body {
+    background-color: #2F4F4F;
+    color: #fff;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x:hidden;
+    
+    MARGIN-TOP: 50px;
+}
+
+
+input[type='submit'], input[type='button'] {
+    border-radius:0px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;  
+}
+
+
+div.newgame.container.sixteen-columns {
+    padding-top: 50px;
+}
+.single-die{border-top:1px solid #fff;height:60px;width:100%;}
+.single-die:nth-child(even){background-color:rgba(255,255,255,0.3);}
+.single-die:last-child{border-bottom:1px solid #fff;padding-bottom:1px;}
+.delete-die,.sides,.side-selector,.arrow,.result{float:left;}
+
+
+.delete-die{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#f00;color:#fff;font-size:1em;padding:20px 10px;height:100%;width:50%;text-align:left;}
+.roll{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#0f0;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:right;margin: 0;}
+.delete-roll {margin-top:-58px;}
+
+.die-wrap{background-color:#2F4F4F;display:block;height:100%;position:relative;margin:0 auto;width:98%;overflow:hidden;z-index:10000;}
+
+.sides {
+   background: #778899;
+   color: #fff;
+   width: 10%;
+   padding: 18px 0;
+   font-size: 1.5em;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: auto;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.single-die select {
+   background: #778899;
+   color: #fff;
+   margin-top:-1px;
+   width: 40%;
+   padding: 18px;
+   font-size: 1.5em;
+   border: 0;
+   border-radius: 0;
+   height: auto;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+select:focus {
+    outline:none;
+}
+
+.arrow {
+    width: 0%;
+	height: 0;
+	border-top: 30px solid transparent;
+	border-left: 30px solid #778899;
+	border-bottom: 30px solid transparent;
+}
+
+
+
+.result {
+   background: transparent;
+   color: #fff;
+   width: 30%;
+   padding: 7px 0;
+   font-size: 1.5em;
+   border: 0;
+   border-radius: 0;
+   height: auto;
+   -webkit-appearance: none;
+   text-align:center;
+}
+
+.result p {
+    width: 50px;
+    margin: 0 auto;
+    padding-top:10px;
+}
+
+.result p.d2{width:45px;height:35px;background:#cccccc;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;}
+.d3  {}
+.d4  {}
+.d5  {}
+.d6  {}
+.d7  {}
+.d8  {}
+.d9  {}
+.d10 {}
+.d11 {}
+.d12 {}
+.d13 {}
+.d14 {}
+.d15 {}
+.d16 {}
+.d17 {}
+.d18 {}
+.d19 {}
+.d20 {}
+.d21 {}
+.d22 {}
+.d23 {}
+.d24 {}
+.d25 {}
+.d26 {}
+.d27 {}
+.d28 {}
+.d29 {}
+    
+footer {position:fixed; bottom:5px;left:5px}
+}
+
+
+
+
+.result .d2{background:red;}
+.result.d3  {}
+.result.d4  {}
+.result.d5  {}
+.result.d6  {}
+.result.d7  {}
+.result.d8  {}
+.result.d9  {}
+.result.d10 {}
+.result.d11 {}
+.result.d12 {}
+.result.d13 {}
+.result.d14 {}
+.result.d15 {}
+.result.d16 {}
+.result.d17 {}
+.result.d18 {}
+.result.d19 {}
+.result.d20 {}
+.result.d21 {}
+.result.d22 {}
+.result.d23 {}
+.result.d24 {}
+.result.d25 {}
+.result.d26 {}
+.result.d27 {}
+.result.d28 {}
+.result.d29 {}
+    
+footer {position:fixed; bottom:5px;left:5px}
+
+@media screen and (max-width: 800px) {
+    body{font-size:14px;}
+    .sides {
+       background: #778899;
+       color: #fff;
+       width: 20%;
+       padding: 20px 0;
+       font-size: 1.5em;
+       line-height: 1;
+       border: 0;
+       border-radius: 0;
+       height: auto;
+       -webkit-appearance: none;
+       text-align:center;
+    }
+
+    .single-die select {
+       background: #778899;
+       color: #fff;
+       margin-top:-1px;
+       width: 40%;
+       padding: 18px;
+       font-size: 1.5em;
+       border: 0;
+       border-radius: 0;
+       height: auto;
+       -webkit-appearance: none;
+       text-align:center;
+    }
+
+    select:focus {
+        outline:none;
+    }
+
+    .arrow {
+        width: 0%;
+    	height: 0;
+    	border-top: 30px solid transparent;
+    	border-left: 30px solid #778899;
+    	border-bottom: 30px solid transparent;
+    }
+
+
+
+    .result {
+       background: transparent;
+       color: #fff;
+       width: 10%;
+       padding: 20px 20px;
+       font-size: 1.5em;
+       line-height: 1;
+       border: 0;
+       border-radius: 0;
+       height: auto;
+       -webkit-appearance: none;
+       text-align:center;
+    }
+    
+}
