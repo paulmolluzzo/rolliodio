@@ -67,23 +67,32 @@ var validCreation = function(i, h, m, d) {
     }
 };
 
+var enterExisting = function(n) {
+    var g = Games.findOne({name:n});
+    var e = "That game doesn't exist.";
+    Session.set("error", null);
+    Session.set("no_game", null);
+    if (Validation.game_exists(n)){
+        Validation.clear();
+        Session.set("current_game", g._id);
+        window.location.hash = ("/" + n);
+    } else {
+        Session.set("error", e)
+    }
+};
+
 if (Meteor.isClient) {
     Meteor.startup(function () {
+        Meteor.subscribe("games", function(){if (n.length === 0) {
+            window.location.hash = "#/"
+        } else {
+            enterExisting(n);
+        }});
+        Meteor.subscribe("dice");
         Session.set("current_game", "");
         Session.set("error", null);
         Session.set("no_game", null);
-        var p = location.hash.substring(2);
-        if (p.length === 0) {
-            window.location.hash = "#/"
-        } else {
-            var g = Games.findOne({game:p});
-            if (g === undefined) {
-                window.location.hash = "#/"
-                Session.set("no_game", p)
-            } else {
-                Session.set("current_game", g._id);
-            }
-        }
+        var n = location.hash.substring(2);
         
     });
     
@@ -105,17 +114,7 @@ if (Meteor.isClient) {
     Template.entergame.events({
         'click input.enter-game': function(){
         var n = document.getElementById('enter-game-name').value;
-        var g = Games.findOne({name:n});
-        var e = "That game doesn't exist.";
-        Session.set("error", null);
-        Session.set("no_game", null);
-        if (Validation.game_exists(n)){
-            Validation.clear();
-            Session.set("current_game", g._id);
-            window.location.replace(Meteor.absoluteUrl() +"#/" + n);
-        } else {
-            Session.set("error", e)
-        }
+        enterExisting(n);
     }
     });
     
@@ -243,6 +242,14 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+      
+      Meteor.publish("games", function(){
+          return Games.find({});
+      })
+      
+      Meteor.publish("dice", function(){
+          return Dice.find();
+      })
       
       // Uncomment to clear the DB
       // Games.remove({});
