@@ -4,20 +4,19 @@
 </head>
 
 <body>
+</body>
+
+<template name="layout">
     <header>
         <h1>APPNAME</h1>
     </header>
-  {{#if currentGameIs "" }}
-    {{> home}}
-  {{else}}
-    {{> currentgame}}
-  {{/if}}
+    {{{yield}}}
   <footer>
       <div class="self-promo">
           <a href="http://paul.molluzzo.com"><img class="logo" src="/logo.png"></a>
       </div>
   </footer>
-</body>
+</template>
 
 <template name="home">
     <div class="home">
@@ -55,7 +54,7 @@
 <template name="currentgame">
     <div class="currentgame">
         {{#each games}}
-        <input type="button" class="exit-game" value="Exit" />
+        <a class="exit-game" href="{{pathFor 'home'}}">Exit</a>
         <h3 class="four columns">Your game is called:</h3>
         <!-- Change the game name -->
         {{#if error}}
@@ -125,3 +124,16 @@
         <input type="button" class="generate-die" value="Add another Die">
     </div>
 </template>
+
+<template name="loading">
+    <div class="loading">
+        <h1>Loading...</h1>
+    </div>
+</template>
+
+<template name="notFound">
+    <div class="not-found">
+        <h1>Loading...</h1>
+    </div>
+</template>
+

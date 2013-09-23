@@ -1,6 +1,8 @@
 Dice = new Meteor.Collection("dice");
 Games = new Meteor.Collection("games");
 
+// Common functionality
+
 var rollDie = function (t) {
     var currentDate = new Date(); 
     var dateTime = currentDate.getDate() + "/"
@@ -34,7 +36,6 @@ Validation = {
   },
   set_error: function (message) {
     return Session.set("error", message);
-    console.log("message");
   },
   valid_name: function (name) {
     this.clear();
@@ -49,16 +50,16 @@ Validation = {
     }
   },
   game_exists: function(name) {
-    return Games.findOne({name: name});
+    return Games.findOne({slug: name});
   }
 };
 
 var validCreation = function(i, h, m, d) {
     if (Validation.valid_name(h)) {
-        Games.update({_id: i}, {$set:{name:h}});
+        Games.update({_id: i}, {$set:{slug:h}});
         Session.set("current_game", i);
-        window.location.hash = "/" + h;
-        Dice.insert({type: "d6", sides: 6, game: i, date: d})
+        Dice.insert({type: "d6", sides: 6, game: i, date: d});
+        Router.go('currentgame', {slug: h});
     } else {
         console.log("Found a match and trying again")
         m = (Math.floor(Math.random()*9+1)) + i;
@@ -67,32 +68,79 @@ var validCreation = function(i, h, m, d) {
     }
 };
 
-var enterExisting = function(n) {
-    var g = Games.findOne({name:n});
-    var e = "That game doesn't exist.";
-    Session.set("error", null);
-    Session.set("no_game", null);
-    if (Validation.game_exists(n)){
-        Validation.clear();
-        Session.set("current_game", g._id);
-        window.location.hash = ("/" + n);
-    } else {
-        Session.set("error", e)
-    }
-};
+// var enterExisting = function(n) {
+//     var g = Games.findOne({_id:n});
+//     var e = "That game doesn't exist.";
+//     Session.set("error", null);
+//     Session.set("no_game", null);
+//     if (Validation.game_exists(n)){
+//         Validation.clear();
+//         Session.set("current_game", g._id);
+//         setTimeout(function(){$('.currentgame').fadeIn('slow')}, 1);
+//         window.location.hash = ("/" + n);
+//     } else {
+//         Session.set("error", e)
+//     }
+// };
+
+
+// Routing
+
+
+
+GameController = RouteController.extend({
+          template: 'currentgame',
+    
+          waitOn: function () {
+            return Meteor.subscribe('games');
+            Session.set("current_game", this.params._id);
+          },
+    
+          data: function () {
+            return Games.find(this.params.slug);
+          },
+    
+          show: function () {
+            // render the RouteController's template into the main yield location
+            this.render();
+            
+          }
+});
+
+Router.map(function () {
+  this.route('home', {
+    path: '/'
+  });
+
+  this.route('currentgame', {
+      path: '/:slug',
+      controller: GameController,
+      action: 'show'
+  });
+});
+
 
 if (Meteor.isClient) {
+    
+    Router.configure({
+      layout: 'layout',
+      notFoundTemplate: 'notFound',
+      loadingTemplate: 'loading'
+    });
+    
+    // Subscriptions = {
+    //   games: Meteor.subscribe('games')
+    // };
+    
+
+    
     Meteor.startup(function () {
-        Meteor.subscribe("games", function(){if (n.length === 0) {
-            window.location.hash = "#/"
-        } else {
-            enterExisting(n);
-        }});
+        Meteor.subscribe("games");
         Meteor.subscribe("dice");
-        Session.set("current_game", "");
-        Session.set("error", null);
-        Session.set("no_game", null);
-        var n = location.hash.substring(2);
+        // Session.set("current_game", "");
+        // Session.set("error", null);
+        // Session.set("no_game", null);
+        // var n = location.hash.substring(2);
         
     });
     
@@ -111,20 +159,21 @@ if (Meteor.isClient) {
         }
     });
     
-    Template.entergame.events({
-        'click input.enter-game': function(){
-        var n = document.getElementById('enter-game-name').value;
-        enterExisting(n);
-    }
-    });
+    // Template.entergame.events({
+    //     'click input.enter-game': function(){
+    //     var n = document.getElementById('enter-game-name').value;
+    //     enterExisting(n);
+    //     $('.currentgame').fadeIn('slow');
+    // }
+    // });
     
     Template.entergame.error = function() {
         return  Session.get("error")
     }
     
-    Template.home.nogame = function() {
-        return  Session.get("no_game")
-    }
+    // Template.home.nogame = function() {
+    //     return  Session.get("no_game");
+    // }
     
     Template.currentgame.dice = function () {
         if (Session.get("current_game") === "0"){
@@ -136,7 +185,7 @@ if (Meteor.isClient) {
     };
     
     Template.currentgame.updateselect = function() {
-        Meteor.defer(function(){setSideSelector();});
+        setTimeout(function(){setSideSelector()},1);
     };
     
     Template.currentgame.games = function() {
@@ -157,9 +206,8 @@ if (Meteor.isClient) {
           }
       },
       
-      'click input.exit-game': function () {
-        Session.set("current_game", "")
-        window.location.hash = "/";
+      'click a.exit-game': function () {
+          Session.set("current_game", "");
         },
       
       'click input.roll-all': function () {
@@ -234,7 +282,6 @@ if (Meteor.isClient) {
       'click input.generate-die': function(){
       var currentdate = new Date().getTime();
       var currentId = Session.get("current_game");
-      console.log(Session.get("current_game"));
       Dice.insert({type: "d6", sides: 6, game: currentId});
       }
   });
@@ -245,11 +292,11 @@ if (Meteor.isServer) {
       
       Meteor.publish("games", function(){
           return Games.find({});
-      })
+      });
       
       Meteor.publish("dice", function(){
           return Dice.find();
-      })
+      });
       
       // Uncomment to clear the DB
       // Games.remove({});
