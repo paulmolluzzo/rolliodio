@@ -68,20 +68,19 @@ var validCreation = function(i, h, m, d) {
     }
 };
 
-// var enterExisting = function(n) {
-//     var g = Games.findOne({_id:n});
-//     var e = "That game doesn't exist.";
-//     Session.set("error", null);
-//     Session.set("no_game", null);
-//     if (Validation.game_exists(n)){
-//         Validation.clear();
-//         Session.set("current_game", g._id);
-//         setTimeout(function(){$('.currentgame').fadeIn('slow')}, 1);
-//         window.location.hash = ("/" + n);
-//     } else {
-//         Session.set("error", e)
-//     }
-// };
+var enterExisting = function(n) {
+    var g = Games.findOne({slug:n});
+    var e = "That game doesn't exist.";
+    Session.set("error", null);
+    Session.set("no_game", null);
+    if (Validation.game_exists(n)){
+        Validation.clear();
+        Session.set("current_game", g._id);
+        Router.go('currentgame', {slug: n});
+    } else {
+        Session.set("error", e)
+    }
+};
 
 
 // Routing
@@ -159,13 +158,12 @@ if (Meteor.isClient) {
         }
     });
     
-    // Template.entergame.events({
-    //     'click input.enter-game': function(){
-    //     var n = document.getElementById('enter-game-name').value;
-    //     enterExisting(n);
-    //     $('.currentgame').fadeIn('slow');
-    // }
-    // });
+    Template.entergame.events({
+        'click input.enter-game': function(){
+        var n = document.getElementById('enter-game-name').value;
+        enterExisting(n);
+    }
+    });
     
     Template.entergame.error = function() {
         return  Session.get("error")
