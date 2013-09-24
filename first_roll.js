@@ -93,6 +93,10 @@ Router.map(function () {
   this.route('home', {
     path: '/'
   });
+  
+  this.route('notFound', {
+      path: '/*'
+  })
 
   this.route('currentgame', {
       path: '/:slug',
