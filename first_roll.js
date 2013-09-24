@@ -57,8 +57,8 @@ Validation = {
 var validCreation = function(i, h, m, d) {
     if (Validation.valid_name(h)) {
         Games.update({_id: i}, {$set:{slug:h}});
-        Session.set("current_game", i);
-        Dice.insert({type: "d6", sides: 6, game: i, date: d});
+        Session.set("current_game", h);
+        Dice.insert({type: "d6", sides: 6, game: h, date: d});
         Router.go('currentgame', {slug: h});
     } else {
         console.log("Found a match and trying again")
@@ -75,7 +75,7 @@ var enterExisting = function(n) {
     Session.set("no_game", null);
     if (Validation.game_exists(n)){
         Validation.clear();
-        Session.set("current_game", g._id);
+        Session.set("current_game", g.slug);
         Router.go('currentgame', {slug: n});
     } else {
         Session.set("error", e)
@@ -87,24 +87,7 @@ var enterExisting = function(n) {
 
 
 
-GameController = RouteController.extend({
-          template: 'currentgame',
-    
-          waitOn: function () {
-            return Meteor.subscribe('games');
-            Session.set("current_game", this.params._id);
-          },
-    
-          data: function () {
-            return Games.find(this.params.slug);
-          },
-    
-          show: function () {
-            // render the RouteController's template into the main yield location
-            this.render();
-            
-          }
-});
+
 
 Router.map(function () {
   this.route('home', {
@@ -113,8 +96,31 @@ Router.map(function () {
 
   this.route('currentgame', {
       path: '/:slug',
-      controller: GameController,
-      action: 'show'
+      before: function() {
+          var slug = this.params.slug;
+          Session.set("current_game", slug)
+          if (App.subs.games)
+              App.subs.games.stop();
+          
+          App.subs.games = Meteor.subscribe('games', slug)
+          
+          if (App.subs.dice)
+              App.subs.dice.stop();
+          
+          App.subs.dice = Meteor.subscribe('dice', {game: slug})
+          
+        },
+      data: {
+          games: function() {
+              return Games.findOne({slug: this.params.slug})
+          },
+          dice: function() {
+              return Dice.find({game: this.params._id})
+          }
+      },
+      waitOn: function() {
+          return App.subs.games;
+      },
   });
 });
 
@@ -127,10 +133,43 @@ if (Meteor.isClient) {
       loadingTemplate: 'loading'
     });
     
-    // Subscriptions = {
-    //   games: Meteor.subscribe('games')
-    // };
+    App = {
+        subs: {
+            games: Meteor.subscribe('games'),
+            dice: Meteor.subscribe('dice')
+        }
+    };
     
+    
+    // GameController = RouteController.extend({
+    //           template: 'currentgame',
+    //           
+    //           before: function() {
+    //             var slug = this.params.slug;
+    //               
+    //             if (App.subs.games)
+    //                 App.subs.games.stop();
+    //             
+    //             app.subs.games = Meteor.subscribe('games', slug)
+    //           },
+    //           
+    //           waitOn: function () {
+    //             return App.subs.games;
+    //           },
+    // 
+    //           data: function () {
+    //             return Games.findOne({slug: this.params.slug});
+    //           },
+    // 
+    //           run: function () {
+    //             // render the RouteController's template into the main yield location
+    //             // var g = Games.findOne({slug: this.params.slug});
+    //             //             Session.set("current_game", g._id)
+    //             console.log(Games.findOne({slug: this.params.slug}));
+    //             this.render('currentgame');
+    // 
+    //           }
+    // });
 
     
     Meteor.startup(function () {
@@ -188,7 +227,7 @@ if (Meteor.isClient) {
     
     Template.currentgame.games = function() {
         var currentId = Session.get("current_game");
-        return Games.find({_id: currentId});
+        return Games.find({slug: currentId});
     };
     
     Template.currentgame.error = function () {
@@ -196,11 +235,18 @@ if (Meteor.isClient) {
       };
     
     Template.currentgame.events({
-        'change #update_game_name': function () {
-          var newName = document.getElementById("update-game-name").value.trim();
-          if (Validation.valid_name(newName)) {
-            Games.update({_id:this._id}, {$set:{name:newName}});
-            window.location.replace(Meteor.absoluteUrl() +"#/" + newName);
+        'change #update-game-name': function () {
+          var n = document.getElementById("update-game-name").value.trim();
+          if (Validation.valid_name(n)) {
+              var currentId = Session.get("current_game");
+              var currentDice = Dice.find({game: currentId});
+              var count = 0;
+              currentDice.forEach(function (die) {
+                  Dice.update({_id:die._id}, {$set:{game:n}});
+                  count += 1;
+                });
+            Games.update({_id:this._id}, {$set:{slug:n}});
+            Router.go('currentgame', {slug: n});
           }
       },
       

@@ -8,7 +8,7 @@
 
 <template name="layout">
     <header>
-        <h1>APPNAME</h1>
+        <a href="{{pathFor 'home'}}"><h1>APPNAME</h1></a>
     </header>
     {{{yield}}}
   <footer>
@@ -62,7 +62,7 @@
             {{error}} 
           </span>
         {{/if}}
-        <input id="update-game-name" type="text" placeholder="{{name}}" />
+        <input id="update-game-name" type="text" placeholder="{{slug}}" />
         <!-- Invite friends -->
         
         <!-- Roll all dice -->
@@ -79,7 +79,7 @@
 <template name="die">
     <div class="single-die clearfix">
         <div class="die-wrap clearfix" data-id="{{_id}}">
-            <p class="sides">Number of sides:</p>
+            <p class="sides">{{game}}</p>
             <select id="{{_id}}" class="side-selector">
               <option value="2">Coin Flip</option>
               <option value="3">3</option>
