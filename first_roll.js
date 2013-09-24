@@ -98,29 +98,23 @@ Router.map(function () {
       path: '/:slug',
       before: function() {
           var slug = this.params.slug;
-          Session.set("current_game", slug)
+          if (Validation.game_exists(slug))
+            Session.set("current_game", slug);
+            
           if (App.subs.games)
               App.subs.games.stop();
           
           App.subs.games = Meteor.subscribe('games', slug)
-          
-          if (App.subs.dice)
-              App.subs.dice.stop();
-          
-          App.subs.dice = Meteor.subscribe('dice', {game: slug})
-          
+                    
         },
       data: {
           games: function() {
               return Games.findOne({slug: this.params.slug})
-          },
-          dice: function() {
-              return Dice.find({game: this.params._id})
           }
       },
       waitOn: function() {
           return App.subs.games;
-      },
+      }
   });
 });
 
@@ -217,7 +211,7 @@ if (Meteor.isClient) {
             return Dice.find({}, {sort: {date: -1}});
         } else {
             var currentId = Session.get("current_game");
-            return Dice.find({game: currentId});
+            return Dice.find({game: currentId}, {sort: {rolled: 1}});
         }
     };
     
@@ -283,10 +277,11 @@ if (Meteor.isClient) {
   });
   
   Template.die.rendered = function() {
+      console.log("rendered");
       var originalMargin = $(".die-wrap").css("margin-left");
       var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
       var ogMarginNum = parseInt(parsedMargin);
-      $(".die-wrap").swipe( {
+      $('.currentgame').find(".die-wrap").swipe( {
               swipeStatus:function(event, phase, direction, distance, fingers){
                 $this = $(this);
                 var targetId = $this.attr("data-id");
