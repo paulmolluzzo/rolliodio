@@ -85,7 +85,11 @@ var enterExisting = function(n) {
 
 // Routing
 
-
+Router.configure({
+  layout: 'layout',
+  notFoundTemplate: 'notFound',
+  loadingTemplate: 'loading'
+});
 
 
 
@@ -93,43 +97,39 @@ Router.map(function () {
   this.route('home', {
     path: '/'
   });
-  
-  this.route('notFound', {
-      path: '/*'
-  })
 
   this.route('currentgame', {
+      template:'currentgame',
       path: '/:slug',
       before: function() {
-          var slug = this.params.slug;
-          if (Validation.game_exists(slug))
-            Session.set("current_game", slug);
-            
-          if (App.subs.games)
-              App.subs.games.stop();
-          
-          App.subs.games = Meteor.subscribe('games', slug)
-                    
+                var slug = this.params.slug;
+                if (Validation.game_exists(slug))
+                  Session.set("current_game", slug);
+                  
+                // if (App.subs.games)
+                //     App.subs.games.stop();
+                // 
+                // console.log("stopped");
+                // App.subs.games = Meteor.subscribe('games')
+                          
+            },
+    data: function() {
+            return Games.findOne({slug: this.params.slug})
         },
-      data: {
-          games: function() {
-              return Games.findOne({slug: this.params.slug})
-          }
-      },
-      waitOn: function() {
-          return App.subs.games;
-      }
+    waitOn: function() {
+                return App.subs.games;
+            }
   });
+  
+  this.route('notFound', {
+     path: '*'
+   });
 });
 
 
 if (Meteor.isClient) {
     
-    Router.configure({
-      layout: 'layout',
-      notFoundTemplate: 'notFound',
-      loadingTemplate: 'loading'
-    });
+
     
     App = {
         subs: {
@@ -159,20 +159,15 @@ if (Meteor.isClient) {
     //             return Games.findOne({slug: this.params.slug});
     //           },
     // 
-    //           run: function () {
-    //             // render the RouteController's template into the main yield location
-    //             // var g = Games.findOne({slug: this.params.slug});
-    //             //             Session.set("current_game", g._id)
-    //             console.log(Games.findOne({slug: this.params.slug}));
-    //             this.render('currentgame');
-    // 
+    //           show: function () {
+    //             this.render();
     //           }
     // });
 
     
     Meteor.startup(function () {
-        Meteor.subscribe("games");
-        Meteor.subscribe("dice");
+        // Meteor.subscribe("games");
+        // Meteor.subscribe("dice");
         // Session.set("current_game", "");
         // Session.set("error", null);
         // Session.set("no_game", null);
