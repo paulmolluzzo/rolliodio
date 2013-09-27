@@ -43,7 +43,7 @@ Validation = {
       this.set_error("Name can't be blank");
       return false;
     } else if (this.game_exists(name)) {
-      this.set_error("Game already exists");
+      this.set_error("Game already exists. Try again.");
       return false;
     } else {
       return true;
@@ -210,7 +210,7 @@ if (Meteor.isClient) {
             return Dice.find({}, {sort: {date: -1}});
         } else {
             var currentId = Session.get("current_game");
-            return Dice.find({game: currentId}, {sort: {rolled: 1}});
+            return Dice.find({game: currentId});
         }
     };
     

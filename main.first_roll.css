@@ -1,118 +1,157 @@
+*:focus {outline-color:#fff;outline-width:3px}
 body {
-    background-color: #2F4F4F;
+    background-color: #1b1b38;
     color: #fff;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    overflow-x:hidden;
+    overflow-x: hidden;
+}
+
+a {color:#fff}
+
+/* Common */
+
+input[type=button] {
+    border-color: none;
+    border: 0px;
+    border: none;
+    border-image-width: 0;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1em;
+    padding: 20px 10px;
+    height: auto;
+}
+
+.error {color:#f00}
+
+
+/* Game Header */
+
+.game-header {
+    height:60px;
+    margin-top: 20px;
+    position:relative;
+    width: 100%
 }
 
 
-div.newgame.container.sixteen-columns {
-    padding-top: 50px;
-}
-.single-die{border-top:1px solid #fff;height:60px;width:100%;}
-.single-die:nth-child(even){background-color:rgba(255,255,255,0.3);}
-.single-die:last-child{border-bottom:1px solid #fff;}
-.delete-die,.sides,.side-selector,.result{float:left;}
-.roll {float:right}
+.exit-game, .currentgame h3{float:left; padding-top:20px}
 
-.delete-die{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#f00;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:left;}
-.roll{border-color:none;border:0px;border:none;border-image-width:0;box-shadow:none;background-color:#0f0;color:#fff;font-size:1em;padding:20px 10px;height:auto;width:50%;text-align:right;}
-.delete-roll {margin-top:-62px;}
 
-.die-wrap{background-color:#2F4F4F;display:block;height:100%;position:relative;margin:0 auto;width:99%;overflow:hidden;z-index:10000;}
-
-.sides {
-   background: #778899;
-   color: #fff;
-   width: 30%;
-   padding: 20px;
-   font-size: 1.5em;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: auto;
-   -webkit-appearance: none;
-   text-align:center;
+.exit-game {
+    background: #f00;
+    height:60px;
+    line-height:60px;
+    padding: 0;
+    text-align: center;
+    width: 10%
 }
 
-.single-die select {
-   background: #778899;
-   color: #fff;
-   margin-top:-1px;
-   width: 10%;
-   padding: 20px;
-   font-size: 1.5em;
-   /*line-height: 1;*/
-   border: 0;
-   border-radius: 0;
-   height: auto;
-   -webkit-appearance: none;
-   text-align:center;
+.currentgame h3 {
+    font-size:150%;
+    height:60px;
+    line-height:60px;
+    padding:0;
+    text-align:right;
+    width:40%;
 }
-
-.sides:after {
-    content: "";
+#bad-update-name {
+    font-size:100%;    
     position: absolute;
-    left: 43%;
-    top: -6px;
-    width: 0;
-    height: 0;
-    border-top: 36px solid transparent;
-    border-left: 44px solid #778899;
-    border-bottom: 36px solid transparent;
+    color: red;
+    top: -5px;
+    padding-left:10px;
+}
+#update-game-name {
+    border: none;
+    background-color: inherit;
+    color:#fff;
+    font-size: 150%;
+    height:60px;
+    line-height:60px;
+    padding: 0 0 0 10px;
+    width: 30%
 }
 
-
-
-.result {
-   background: transparent;
-   color: #fff;
-   width: 40%;
-   padding: 20px;
-   font-size: 1.5em;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: auto;
-   -webkit-appearance: none;
-   text-align:center;
+#update-game-name:focus {
+    background-color: inherit;
+    color:#fff;
+    font-size: 150%;
+    height:60px;
+    line-height:60px;
+    padding: 0 0 0 10px;
+    width: 30%
 }
 
-
-
-.d2  {}
-.d3  {}
-.d4  {}
-.d5  {}
-.d6  {}
-.d7  {}
-.d8  {}
-.d9  {}
-.d10 {}
-.d11 {}
-.d12 {}
-.d13 {}
-.d14 {}
-.d15 {}
-.d16 {}
-.d17 {}
-.d18 {}
-.d19 {}
-.d20 {}
-.d21 {}
-.d22 {}
-.d23 {}
-.d24 {}
-.d25 {}
-.d26 {}
-.d27 {}
-.d28 {}
-.d29 {}
+.roll-all {background-color:#0f0;float:right;width:10%}
     
-footer {position:fixed; bottom:5px;left:5px}
+    
+    
+/* Dice Styling*/
+
+.single-die{border-top:3px solid #fff;height:60px;width:100%;}
+.single-die:nth-child(2){margin-top:10px}
+.single-die:nth-child(even){background-color:rgba(255,255,255,0.3);}
+.single-die:last-child{border-bottom:3px solid #fff;}
+.delete-die,.sides,.side-selector,.arrow,.result{float:left;}
+.roll{float:right}
+.delete-roll{margin-top:-62px;}
+.delete-die{background-color:#f00;text-align:left;width:50%;}
+.roll{background-color:#0f0;text-align:right;width:50%;}
+.die-wrap{background-color:#1b1b38;display:block;height:100%;position:relative;margin:0 auto;width:99%;overflow:hidden;z-index:10000;}
+.sides{background:#778899;color:#fff;width:15%;padding:18px 0;font-size:1.5em;line-height:1;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
+.single-die select{background:#778899;color:#fff;margin-top:-1px;width:40%;padding:18px;font-size:1.5em;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
+select:focus{outline:none;}
+.arrow{width:0%;height:0;border-top:30px solid transparent;border-left:30px solid #778899;border-bottom:30px solid transparent;}
+.result{background:transparent;color:#fff;width:30%;padding:7px 0;font-size:1.5em;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
+.result div{position:relative;width:50px;margin:0 auto;padding-top:10px;}
+
+
+.result p {margin:0 auto;}
+
+.result div.d2  {width:45px;height:35px;background:#cccccc;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;}
+.result div.d3  {width:61px;height:30px;background:#f1f1f1;color:#333333;-moz-border-radius:52px / 37px;-webkit-border-radius:52px / 37px;border-radius:52px / 37px;padding-bottom:3px;}
+.result div.d4  {width:0;height:auto;background:#f1f1f1;border-left:22px solid #2F4F4F;border-right:22px solid #2F4F4F;border-bottom:44px solid red;margin-top:-10px}
+.result div.d4 p {position:absolute;margin-top:15px;margin-left:-8px}
+.result div.d5  {width:25px;height:35px;background:#f1f1f1;color:#333333;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+.result div.d6  {width:45px;height:35px;background:#f1f1f1;color:#333333;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+.result div.d7  {}
+.result div.d8  {}
+.result div.d9  {}
+.result div.d10  {width:0;height:auto;background:#f1f1f1;border-left:20px solid #2F4F4F;border-right:20px solid #2F4F4F;border-bottom:44px solid red;margin-top:-10px}
+.result div.d10 p {position:absolute;margin-top:15px;margin-left:-8px}
+.result div.d11 {}
+.result div.d12 {}
+.result div.d13 {}
+.result div.d14 {}
+.result div.d15 {}
+.result div.d16 {}
+.result div.d17 {}
+.result div.d18 {}
+.result div.d19 {}
+.result div.d20 {}
+.result div.d21 {}
+.result div.d22 {}
+.result div.d23 {}
+.result div.d24 {}
+.result div.d25 {}
+.result div.d26 {}
+.result div.d27 {}
+.result div.d28 {}
+.result div.d29 {}
+
+/*Create Dice Button */
+.generate-die{font-weight:700;margin-top:10px;width:100%;text-transform:uppercase;}
+
+
+footer {
+    position: fixed;
+    bottom: 5px;
+    left: 5px
+}
