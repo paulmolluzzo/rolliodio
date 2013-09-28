@@ -82,16 +82,11 @@ var enterExisting = function(n) {
     }
 };
 
-
-// Routing
-
 Router.configure({
   layout: 'layout',
   notFoundTemplate: 'notFound',
   loadingTemplate: 'loading'
 });
-
-
 
 Router.map(function () {
   this.route('home', {
@@ -99,26 +94,19 @@ Router.map(function () {
   });
 
   this.route('currentgame', {
-      template:'currentgame',
-      path: '/:slug',
-      before: function() {
+    template:'currentgame',
+    path: '/:slug',
+    before: function() {
                 var slug = this.params.slug;
                 if (Validation.game_exists(slug))
-                  Session.set("current_game", slug);
-                  
-                // if (App.subs.games)
-                //     App.subs.games.stop();
-                // 
-                // console.log("stopped");
-                // App.subs.games = Meteor.subscribe('games')
-                          
-            },
+                  Session.set("current_game", slug);            
+    },
     data: function() {
             return Games.findOne({slug: this.params.slug})
-        },
+    },
     waitOn: function() {
                 return App.subs.games;
-            }
+    }
   });
   
   this.route('notFound', {
@@ -126,54 +114,14 @@ Router.map(function () {
    });
 });
 
-
 if (Meteor.isClient) {
-    
 
-    
     App = {
         subs: {
             games: Meteor.subscribe('games'),
             dice: Meteor.subscribe('dice')
         }
     };
-    
-    
-    // GameController = RouteController.extend({
-    //           template: 'currentgame',
-    //           
-    //           before: function() {
-    //             var slug = this.params.slug;
-    //               
-    //             if (App.subs.games)
-    //                 App.subs.games.stop();
-    //             
-    //             app.subs.games = Meteor.subscribe('games', slug)
-    //           },
-    //           
-    //           waitOn: function () {
-    //             return App.subs.games;
-    //           },
-    // 
-    //           data: function () {
-    //             return Games.findOne({slug: this.params.slug});
-    //           },
-    // 
-    //           show: function () {
-    //             this.render();
-    //           }
-    // });
-
-    
-    Meteor.startup(function () {
-        // Meteor.subscribe("games");
-        // Meteor.subscribe("dice");
-        // Session.set("current_game", "");
-        // Session.set("error", null);
-        // Session.set("no_game", null);
-        // var n = location.hash.substring(2);
-        
-    });
     
     Handlebars.registerHelper('currentGameIs',function(game){
         return Session.get("current_game") == game;
@@ -201,17 +149,9 @@ if (Meteor.isClient) {
         return  Session.get("error")
     }
     
-    // Template.home.nogame = function() {
-    //     return  Session.get("no_game");
-    // }
-    
     Template.currentgame.dice = function () {
-        if (Session.get("current_game") === "0"){
-            return Dice.find({}, {sort: {date: -1}});
-        } else {
-            var currentId = Session.get("current_game");
-            return Dice.find({game: currentId});
-        }
+        var currentId = Session.get("current_game");
+        return Dice.find({game: currentId});
     };
     
     Template.currentgame.updateselect = function() {
@@ -224,64 +164,46 @@ if (Meteor.isClient) {
     };
     
     Template.currentgame.error = function () {
-      return Session.get("error");
-      };
+        return Session.get("error");
+    };
     
     Template.currentgame.events({
         'change #update-game-name': function () {
-          var n = document.getElementById("update-game-name").value.trim();
-          if (Validation.valid_name(n)) {
-              var currentId = Session.get("current_game");
-              var currentDice = Dice.find({game: currentId});
-              var count = 0;
-              currentDice.forEach(function (die) {
-                  Dice.update({_id:die._id}, {$set:{game:n}});
-                  count += 1;
+            var n = document.getElementById("update-game-name").value.trim();
+            if (Validation.valid_name(n)) {
+                var currentId = Session.get("current_game");
+                var currentDice = Dice.find({game: currentId});
+                var count = 0;
+                currentDice.forEach(function (die) {
+                    Dice.update({_id:die._id}, {$set:{game:n}});
+                    count += 1;
                 });
-            Games.update({_id:this._id}, {$set:{slug:n}});
-            Router.go('currentgame', {slug: n});
-          }
-      },
-      
-      'click a.exit-game': function () {
-          Session.set("current_game", "");
+                Games.update({_id:this._id}, {$set:{slug:n}});
+                Router.go('currentgame', {slug: n});
+            }
         },
       
-      'click input.roll-all': function () {
-          var currentId = Session.get("current_game");
-          var currentDice = Dice.find({game: currentId});
-          var count = 0;
-          currentDice.forEach(function (die) {
-            rollDie(die);
-            count += 1;
-          });
-    }
-    });
-
-  Template.die.events({
-      'click input.roll': function() {
-          rollDie(this);
-      },
-
-      'click input.delete-die': function () {
-          Dice.remove(this._id);
+        'click a.exit-game': function () {
+            Session.set("current_game", "");
         },
-        
-        'change select.side-selector': function() {
-            var t = document.getElementById(this._id);
-            var v = t.options[t.selectedIndex].value;
-            Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
-            setSideSelector();
+      
+        'click input.roll-all': function () {
+            var currentId = Session.get("current_game");
+            var currentDice = Dice.find({game: currentId});
+            var count = 0;
+            currentDice.forEach(function (die) {
+                rollDie(die);
+                count += 1;
+            });
         }
-  });
+    });
   
-  Template.die.rendered = function() {
-      console.log("rendered");
-      var originalMargin = $(".die-wrap").css("margin-left");
-      var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
-      var ogMarginNum = parseInt(parsedMargin);
-      $('.currentgame').find(".die-wrap").swipe( {
-              swipeStatus:function(event, phase, direction, distance, fingers){
+    Template.die.rendered = function() {
+        var originalMargin = $(".die-wrap").css("margin-left");
+        var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
+        var ogMarginNum = parseInt(parsedMargin);
+        $('.currentgame').find(".die-wrap").swipe( {
+            swipeStatus:function(event, phase, direction, distance, fingers){
                 $this = $(this);
                 var targetId = $this.attr("data-id");
                 var threshold = 150;
@@ -296,7 +218,7 @@ if (Meteor.isClient) {
                         $this.animate({marginLeft: originalMargin});
                     }
                 }
-            
+
                 if (direction=="right"){
                     $this.css("margin-left",ogMarginNum + (distance/2) + "px");
                     if ( distance>threshold){
@@ -306,23 +228,34 @@ if (Meteor.isClient) {
                         $this.animate({marginLeft: originalMargin});
                     }
                 }
-            
-                
-            }
+            }  
+        });
+    };
+    
+    Template.die.events({
+        'click input.roll': function() {
+            rollDie(this);
+        },
 
-
-              
-              
-            });
-  };
+        'click input.delete-die': function () {
+            Dice.remove(this._id);
+        },
+        
+        'change select.side-selector': function() {
+            var t = document.getElementById(this._id);
+            var v = t.options[t.selectedIndex].value;
+            Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
+            setSideSelector();
+        }
+    });
   
-  Template.newdie.events({
-      'click input.generate-die': function(){
-      var currentdate = new Date().getTime();
-      var currentId = Session.get("current_game");
-      Dice.insert({type: "d6", sides: 6, game: currentId});
-      }
-  });
+    Template.newdie.events({
+        'click input.generate-die': function(){
+            var currentdate = new Date().getTime();
+            var currentId = Session.get("current_game");
+            Dice.insert({type: "d6", sides: 6, game: currentId, result:"-"});
+        }
+    });
 }
 
 if (Meteor.isServer) {
@@ -340,16 +273,15 @@ if (Meteor.isServer) {
       // Games.remove({});
       // Dice.remove({});
       
-      // Allows insertion, update, removal within DB from client console
       Dice.allow({
-        insert: function () { return true; },
-        update: function () { return true; },
-        remove: function () { return true; }
+          insert: function () { return true; },
+          update: function () { return true; },
+          remove: function () { return true; }
       });
+
       Games.allow({
-        insert: function () { return true; },
-        update: function () { return true; }
+          insert: function () { return true; },
+          update: function () { return true; }
       });
-    
   });
 }
