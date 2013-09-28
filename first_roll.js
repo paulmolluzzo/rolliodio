@@ -58,7 +58,7 @@ var validCreation = function(i, h, m, d) {
     if (Validation.valid_name(h)) {
         Games.update({_id: i}, {$set:{slug:h}});
         Session.set("current_game", h);
-        Dice.insert({type: "d6", sides: 6, game: h, date: d});
+        Dice.insert({type: "d6", sides: 6, game: h, date: d, result: "-"});
         Router.go('currentgame', {slug: h});
     } else {
         console.log("Found a match and trying again")

@@ -18,18 +18,35 @@ a {color:#fff}
 
 input[type=button] {
     border-color: none;
-    border: 0px;
+    border: 0;
     border: none;
     border-image-width: 0;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
     box-shadow: none;
     color: #fff;
     font-size: 1em;
+    outline: 0;
     padding: 20px 10px;
     height: auto;
 }
 
 .error {color:#f00}
 
+/* New and Enter Game */
+
+.generate {
+    
+}
+
+#bad-entry {
+    
+}
+
+#enter-game-name {
+    
+}
 
 /* Game Header */
 
