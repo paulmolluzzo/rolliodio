@@ -59,7 +59,7 @@ input[type=button] {
 .exit-game, .currentgame h3{float:left; padding-top:20px}
 
 .exit-game {
-    background: #f00;
+    background: #f73134;
     height:60px;
     line-height:60px;
     padding: 0;
@@ -103,25 +103,50 @@ input[type=button] {
     width: 30%
 }
 
-.roll-all {background-color:#0f0;float:right;width:10%}
+.roll-all {background-color:#89c46a;float:right;width:10%}
 
 /* Dice Styling*/
 
-.single-die{border-top:3px solid #fff;height:60px;width:100%;}
+.single-die {
+    background: -moz-linear-gradient(left,  #f73134 0%, #f73134 50%, #89c46a 51%, #89c46a 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f73134), color-stop(50%,#f73134), color-stop(51%,#89c46a), color-stop(100%,#89c46a)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 51%,#89c46a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 51%,#89c46a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 51%,#89c46a 100%); /* IE10+ */
+    background: linear-gradient(to right,  #f73134 0%,#f73134 50%,#89c46a 51%,#89c46a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f73134', endColorstr='#89c46a',GradientType=1 ); /* IE6-9 */
+    border-top: 3px solid #fff;
+    padding: 0 7px;
+    height: 60px;
+    width: auto;
+}
+
 .single-die:nth-child(2){margin-top:10px}
-.single-die:nth-child(even){background-color:rgba(255,255,255,0.3);}
 .single-die:last-child{border-bottom:3px solid #fff;}
 .delete-die,.sides,.side-selector,.arrow,.result{float:left;}
 .roll{float:right}
 .delete-roll{margin-top:-62px;}
-.delete-die{background-color:#f00;text-align:left;width:50%;}
-.roll{background-color:#0f0;text-align:right;width:50%;}
-.die-wrap{background-color:#1b1b38;display:block;height:100%;position:relative;margin:0 auto;width:99%;overflow:hidden;z-index:10000;}
-.sides{background:#778899;color:#fff;width:15%;padding:18px 0;font-size:1.5em;line-height:1;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
-.single-die select{background:#778899;color:#fff;margin-top:-1px;width:40%;padding:18px;font-size:1.5em;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
+.delete-roll .delete-die {
+    background-color:rgba(255,255,255,0);
+    padding-top:21px;
+    padding-bottom:21px;
+    text-align: left;
+    width: 50%;
+}
+.delete-roll .roll {
+    background-color:rgba(255,255,255,0);
+    padding-top:21px;
+    padding-bottom:21px;
+    text-align: right;
+    width: 50%;
+}
+
+.die-wrap{background-color:#1b1b38;display:block;height:100%;position:relative;margin:0 auto;width:100%;overflow:hidden;z-index:10000;}
+.sides{background:#778899;color:#fff;width:25%;padding:18px 0 ;font-size:150%;line-height:1;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:right;}
+.single-die select{background:#778899;color:#fff;margin:0;width:auto;padding:18px 0 18px 5px;font-size:150%;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
 select:focus{outline:none;}
 .arrow{width:0%;height:0;border-top:30px solid transparent;border-left:30px solid #778899;border-bottom:30px solid transparent;}
-.result{background:transparent;color:#fff;width:30%;padding:7px 0;font-size:1.5em;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
+.result{background:transparent;color:#fff;width:20%;padding:7px 0;font-size:150%;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
 .result div{position:relative;width:50px;margin:0 auto;padding-top:10px;}
 
 
