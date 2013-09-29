@@ -1,8 +1,12 @@
+/* Common */
+
 *:focus {outline-color:#fff;outline-width:3px}
+
 body {
     background-color: #1b1b38;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
+    font-size:18px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -14,7 +18,7 @@ body {
 
 a {color:#fff}
 
-/* Common */
+h2 {font-size:175%}
 
 input[type=button] {
     border-color: none;
@@ -26,26 +30,87 @@ input[type=button] {
     border-radius:0;
     box-shadow: none;
     color: #fff;
-    font-size: 1em;
+    font-size: 150%;
     outline: 0;
-    padding: 20px 10px;
+    padding: 0 10px;
+    line-height:60px;
     height: auto;
 }
 
 .error {color:#f00}
 
+header a h1 {
+    font-family: 'Cinzel', serif;
+    font-size:225%;
+    text-decoration: none;
+}
+
+header a {
+    text-decoration: none;    
+}
+
 /* New and Enter Game */
 
+.home {
+    margin:30px auto 0 auto;
+    width:90%;
+}
+
+.home h2 {
+    float: left;
+}
+
+.intro {
+    float: right;
+    margin-top: 25px;
+    margin-left: 400px;
+}
+
+.intro span {
+    font-family: 'Cinzel', serif;
+}
+
 .generate {
-    
+    display: block;
+    font-size:150%;
+    height: 60px;
+    margin-top: 50px;
+    width:100%;
 }
 
 #bad-entry {
     
 }
 
-#enter-game-name {
+.enter-game p {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#enter-game-name, input.enter-game {
+    float:left;
+    font-size: 150%;
+    height:60px;
+    text-align: center;
+}
     
+#enter-game-name {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    border:0;
+    height:auto;
+    margin:0;
+    padding: 20px 0 20px 10%;
+    width:90%;
+}
+
+input.enter-game {
+    height:auto;
+    margin:0;
+    padding: 20px 0;
+    text-align: center;
+    width:10%;
 }
 
 /* Game Header */
@@ -103,7 +168,7 @@ input[type=button] {
     width: 30%
 }
 
-.roll-all {background-color:#89c46a;float:right;width:10%}
+input.roll-all {background-color:#89c46a;float:right;width:10%}
 
 /* Dice Styling*/
 
@@ -125,29 +190,89 @@ input[type=button] {
 .single-die:last-child{border-bottom:3px solid #fff;}
 .delete-die,.sides,.side-selector,.arrow,.result{float:left;}
 .roll{float:right}
-.delete-roll{margin-top:-64px;}
-.delete-roll .delete-die {
-    background-color:rgba(255,255,255,0);
-    padding-top:21px;
-    padding-bottom:21px;
-    text-align: left;
-    width: 50%;
+.delete-roll {
+    display: block;
+    height:100%;
+    margin-top: -64px;
+    width: 100%
 }
-.delete-roll .roll {
+div.delete-roll input.delete-die, div.delete-roll input.roll {
     background-color:rgba(255,255,255,0);
-    padding-top:21px;
-    padding-bottom:21px;
+    line-height:60px;
+    text-align: left;
+    width: 40%;
+    padding: 0px;
+}
+div.delete-roll input.roll {
     text-align: right;
-    width: 50%;
 }
 
-.die-wrap{background-color:#1b1b38;display:block;height:100%;position:relative;margin:0 auto;width:100%;overflow:hidden;z-index:10000;}
-.sides{background:#778899;color:#fff;width:25%;padding:18px 0 ;font-size:150%;line-height:1;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:right;}
-.single-die select{background:#778899;color:#fff;margin:0;width:auto;padding:18px 0 18px 5px;font-size:150%;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
-select:focus{outline:none;}
-.arrow{width:0%;height:0;border-top:30px solid transparent;border-left:30px solid #778899;border-bottom:30px solid transparent;}
-.result{background:transparent;color:#fff;width:20%;padding:7px 0;font-size:150%;border:0;border-radius:0;height:auto;-webkit-appearance:none;text-align:center;}
-.result div{position:relative;width:50px;margin:0 auto;padding-top:10px;}
+.die-wrap {
+    background-color: #1b1b38;
+    display: block;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    z-index: 10000;
+}
+.sides {
+    background: #2c2c5a;
+    color: #fff;
+    width: 25%;
+    padding-right: 10px;
+    font-size: 150%;
+    line-height: 60px;
+    border: 0;
+    border-radius: 0;
+    height: auto;
+    -webkit-appearance: none;
+    text-align: right;
+}
+.single-die select {
+    background: #2c2c5a;
+    color: #fff;
+    margin: 0;
+    width: auto;
+    padding-left:10px;
+    line-height: 60px;
+    font-size: 150%;
+    border: 0;
+    border-radius: 0;
+    height: auto;
+    -webkit-appearance: none;
+    text-align: center;
+}
+select:focus {
+    outline: none;
+}
+.arrow {
+    width: 0%;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-left: 30px solid #2c2c5a;
+    border-bottom: 30px solid transparent;
+}
+.result {
+    background: transparent;
+    color: #fff;
+    width: 20%;
+    padding: 7px 0;
+    font-size: 150%;
+    border: 0;
+    border-radius: 0;
+    height: auto;
+    -webkit-appearance: none;
+    text-align: center;
+}
+.result div {
+    position: relative;
+    width: 50px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
 
 
 .result p {margin:0 auto;}
