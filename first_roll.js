@@ -22,7 +22,7 @@ var setSideSelector = function() {
           var dieSides = currentDice[i].sides;
           var dieId = currentDice[i]._id;
           var targetSelector = document.getElementById(dieId);
-          targetSelector[dieSides-2].setAttribute('selected', 'selected');
+          targetSelector[dieSides-2].selected=true;
       }
 };
 
