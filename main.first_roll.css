@@ -20,7 +20,10 @@ a {color:#fff}
 
 h2 {font-size:175%}
 
-input[type=button] {
+input[type='submit'], input[type='button'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border-color: none;
     border: 0;
     border: none;
@@ -35,6 +38,10 @@ input[type=button] {
     padding: 0 10px;
     line-height:60px;
     height: auto;
+}
+
+input, input[type="password"], input[type="search"], isindex {
+    padding:0;
 }
 
 .error {color:#f00}
@@ -57,13 +64,10 @@ header a {
 }
 
 .home h2 {
-    float: left;
 }
 
 .intro {
-    float: right;
     margin-top: 25px;
-    margin-left: 400px;
 }
 
 .intro span {
@@ -90,7 +94,7 @@ header a {
 #enter-game-name, input.enter-game {
     float:left;
     font-size: 150%;
-    height:60px;
+    line-height:60px;
     text-align: center;
 }
     
@@ -100,15 +104,15 @@ header a {
     box-sizing: border-box;
     border:0;
     height:auto;
+    line-height:60px;
     margin:0;
-    padding: 20px 0 20px 10%;
+    padding-left: 10%;
     width:90%;
 }
 
 input.enter-game {
     height:auto;
     margin:0;
-    padding: 20px 0;
     text-align: center;
     width:10%;
 }
@@ -125,6 +129,7 @@ input.enter-game {
 
 .exit-game {
     background: #f73134;
+    font-size:150%;
     height:60px;
     line-height:60px;
     padding: 0;
