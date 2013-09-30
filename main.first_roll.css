@@ -322,6 +322,18 @@ select:focus {
 /*Create Dice Button */
 .generate-die{font-weight:700;margin-top:10px;width:100%;text-transform:uppercase;}
 
+/* Not Found */
+
+.not-found {
+    margin:30px auto 0 auto;
+    width:90%;
+}
+
+.not-found h2 {
+    margin: 50px auto;
+    text-align: center;
+}
+
 footer {
     position: fixed;
     bottom: 5px;
