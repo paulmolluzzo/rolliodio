@@ -1,55 +1,33 @@
-<!doctype html>
-<head>
-    
-<style>
-    /* #Reset Inspired by E. Meyers */
-    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
-    body{line-height:1;}
-    ol,ul{list-style:none;}
-    blockquote,q{quotes:none;}
-    blockquote:before,blockquote:after,
-    q:before,q:after{content:'';content:none;}
-    table{border-collapse:collapse;border-spacing:0;}
-    /*Clearfix*/
-    .container:after{content:"\0020";display:block;height:0;clear:both;visibility:hidden;}
-    .clearfix:before,
-    .clearfix:after,
-    .row:before,
-    .row:after{content:'\0020';display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
-    .row:after,
-    .clearfix:after{clear:both;}
-    .row,
-    .clearfix{zoom:1;}
-    .clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
-    
-    
-</style>
-<link rel="stylesheet" href="die.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<html><head>
+  <link rel="stylesheet" href="../client/reset.css">
+  <link rel="stylesheet" href="../main.first_roll.css">
+
+
+  <title>first_roll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="/jquery.touchSwipe.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Cinzel:700|Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-    
+<header>
+        <a href="/"><h1>APPNAME</h1></a>
+    </header>
     <div class="currentgame">
-           <input type="button" class="exit-game" value="Exit" />
-           <h3 class="four columns">Your game is called:</h3>
-           <!-- Change the game name -->
-             <span id="error bad-update-name">
-               "That game already exists" 
-             </span>
-           <input id="update-game-name" type="text" placeholder="{{name}}" />
-           <!-- Invite friends -->
-
-           <!-- Roll all dice -->
-           <input type="button" class="roll-all" value="#" />
-   
-    
-    <div class="single-die clearfix d6">
-        <div class="die-wrap clearfix" data-id="{{_id}}">
+        
+        <div class="game-header clearfix">
+            <a class="exit-game" href="/">Exit</a>
+            <h3 class="">Your game is called:</h3>
+            
+            <input id="update-game-name" type="text" placeholder="alldice">
+            <!-- Invite friends -->
+            <input type="button" class="roll-all" value="Roll All">
+        </div>
+        
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="YeEBWXSYp32PoeGur">
             <p class="sides">Sides:</p>
-            <select id="{{_id}}" class="side-selector">
+            <select id="YeEBWXSYp32PoeGur" class="side-selector">
               <option value="2">Coin Flip</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -81,21 +59,21 @@
             </select>
             <p class="arrow"></p>
             <div class="result">
-                <div class="d10">
-                    <p>6</p>
-                </div>
+                <p class="d2">1</p>
             </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
         </div>
-        <div class="delete-roll clearfix">
+        <div class="delete-roll">
             <input type="button" class="delete-die" value="Delete»»">
             <input type="button" class="roll" value="««Roll It">
         </div>
     </div>
-
-    <div class="single-die clearfix d6">
-        <div class="die-wrap clearfix" data-id="{{_id}}">
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="NwncwPBiPLNdK2sHp">
             <p class="sides">Sides:</p>
-            <select id="{{_id}}" class="side-selector">
+            <select id="NwncwPBiPLNdK2sHp" class="side-selector">
               <option value="2">Coin Flip</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -127,19 +105,1219 @@
             </select>
             <p class="arrow"></p>
             <div class="result">
-                <div class="d4">
-                    <p>6</p>
-                </div>
+                <p class="d3">1</p>
             </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
         </div>
-        <div class="delete-roll clearfix">
+        <div class="delete-roll">
             <input type="button" class="delete-die" value="Delete»»">
             <input type="button" class="roll" value="««Roll It">
         </div>
     </div>
-
-<div class="newdie ">
-    <input type="button" class="generate-die" value="Add another Die">
-</div>
-
-</body></html>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="YTtQAef3e4ynkpsug">
+            <p class="sides">Sides:</p>
+            <select id="YTtQAef3e4ynkpsug" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d4">2</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="GkqtKmWctZwBCs4LL">
+            <p class="sides">Sides:</p>
+            <select id="GkqtKmWctZwBCs4LL" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d5">4</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="qt5sMX6KHSdZE7yg3">
+            <p class="sides">Sides:</p>
+            <select id="qt5sMX6KHSdZE7yg3" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d6">6</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="aFJCE7CbHR8f9iqq8">
+            <p class="sides">Sides:</p>
+            <select id="aFJCE7CbHR8f9iqq8" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d7">1</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="bWTqiWJdMed2nrNF8">
+            <p class="sides">Sides:</p>
+            <select id="bWTqiWJdMed2nrNF8" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d8">3</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="egtvf85MH9pkEofSC">
+            <p class="sides">Sides:</p>
+            <select id="egtvf85MH9pkEofSC" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d9">2</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="r94gEkFvCwZPzsY6r">
+            <p class="sides">Sides:</p>
+            <select id="r94gEkFvCwZPzsY6r" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d10">9</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="ZJ7AmHkDMMa9pGRQN">
+            <p class="sides">Sides:</p>
+            <select id="ZJ7AmHkDMMa9pGRQN" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d11">9</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="hYYRFLLi76BHEPv92">
+            <p class="sides">Sides:</p>
+            <select id="hYYRFLLi76BHEPv92" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d12">4</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="E6SLWfFxHyToMeYFd">
+            <p class="sides">Sides:</p>
+            <select id="E6SLWfFxHyToMeYFd" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d13">4</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="uoa4NP9FK7PAxXvDg">
+            <p class="sides">Sides:</p>
+            <select id="uoa4NP9FK7PAxXvDg" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d14">11</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="QHcrC5sycE6P6BAh8">
+            <p class="sides">Sides:</p>
+            <select id="QHcrC5sycE6P6BAh8" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d15">2</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="jako3buh3KdoLGcQp">
+            <p class="sides">Sides:</p>
+            <select id="jako3buh3KdoLGcQp" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d16">6</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="ZNqFgYTNWdgCyDJQ4">
+            <p class="sides">Sides:</p>
+            <select id="ZNqFgYTNWdgCyDJQ4" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d17">15</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="jLJN54j4FTG397nKk">
+            <p class="sides">Sides:</p>
+            <select id="jLJN54j4FTG397nKk" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d18">3</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="bbQ82iCfgktZZfhRW">
+            <p class="sides">Sides:</p>
+            <select id="bbQ82iCfgktZZfhRW" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d19">18</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="bFKFJT54hRL9jMsR3">
+            <p class="sides">Sides:</p>
+            <select id="bFKFJT54hRL9jMsR3" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d20">20</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="zJ4EtCQFDPA5vTtt5">
+            <p class="sides">Sides:</p>
+            <select id="zJ4EtCQFDPA5vTtt5" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d21">7</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="TziNyMHgKqWRvSEKG">
+            <p class="sides">Sides:</p>
+            <select id="TziNyMHgKqWRvSEKG" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d22">16</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="eSaLqhdERYeugcyEX">
+            <p class="sides">Sides:</p>
+            <select id="eSaLqhdERYeugcyEX" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d23">20</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="iu2T8RFJE3pDAP3ts">
+            <p class="sides">Sides:</p>
+            <select id="iu2T8RFJE3pDAP3ts" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d24">3</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="yuZW7EYhKxwtN4Noh">
+            <p class="sides">Sides:</p>
+            <select id="yuZW7EYhKxwtN4Noh" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d25">2</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="99ry7HymZDu4GpqYf">
+            <p class="sides">Sides:</p>
+            <select id="99ry7HymZDu4GpqYf" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d26">12</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="jvvdZGc9sDNdQvDWM">
+            <p class="sides">Sides:</p>
+            <select id="jvvdZGc9sDNdQvDWM" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d27">24</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="sEW9oWF5D3fgLXq3r">
+            <p class="sides">Sides:</p>
+            <select id="sEW9oWF5D3fgLXq3r" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d28">13</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+        
+          <div class="single-die clearfix">
+        <div class="die-wrap clearfix" data-id="LfxwkX4mBAdLXvY4X">
+            <p class="sides">Sides:</p>
+            <select id="LfxwkX4mBAdLXvY4X" class="side-selector">
+              <option value="2">Coin Flip</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+            </select>
+            <p class="arrow"></p>
+            <div class="result">
+                <p class="d29">20</p>
+            </div>
+            <p class="roll-time">Last rolled: 9/30/2013 @ 22:25:49</p>
+        </div>
+        <div class="delete-roll">
+            <input type="button" class="delete-die" value="Delete»»">
+            <input type="button" class="roll" value="««Roll It">
+        </div>
+    </div>
+          
+         
+    </div>  
+    <div class="newdie ">
+        <input type="button" class="generate-die" value="Add another Die">
+    </div>
+  <footer>
+      <div class="self-promo">
+          <a href="http://paul.molluzzo.com"><img class="logo" src="/logo.png"></a>
+      </div>
+  </footer></body></html>
