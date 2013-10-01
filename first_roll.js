@@ -5,8 +5,8 @@ Games = new Meteor.Collection("games");
 
 var rollDie = function (t) {
     var currentDate = new Date(); 
-    var dateTime = currentDate.getDate() + "/"
-                    + (currentDate.getMonth()+1)  + "/" 
+    var dateTime = (currentDate.getMonth()+1) + "/"
+                    + (currentDate.getDate())  + "/" 
                     + currentDate.getFullYear() + " @ "  
                     + currentDate.getHours() + ":"  
                     + currentDate.getMinutes() + ":" 
@@ -58,7 +58,7 @@ var validCreation = function(i, h, m, d) {
     if (Validation.valid_name(h)) {
         Games.update({_id: i}, {$set:{slug:h}});
         Session.set("current_game", h);
-        Dice.insert({type: "d6", sides: 6, game: h, date: d, result: "-"});
+        Dice.insert({type: "d6", sides: 6, game: h, date: d, result: "-", rolled: "never"});
         Router.go('currentgame', {slug: h});
     } else {
         console.log("Found a match and trying again")
@@ -253,7 +253,7 @@ if (Meteor.isClient) {
         'click input.generate-die': function(){
             var currentdate = new Date().getTime();
             var currentId = Session.get("current_game");
-            Dice.insert({type: "d6", sides: 6, game: currentId, result:"-"});
+            Dice.insert({type: "d6", sides: 6, game: currentId, result:"-", rolled: "never"});
         }
     });
 }

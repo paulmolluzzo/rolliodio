@@ -24,6 +24,7 @@ input[type='submit'], input[type='button'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background-color:#ccc;
     border-color: none;
     border: 0;
     border: none;
@@ -266,58 +267,58 @@ select:focus {
     border-bottom: 30px solid transparent;
 }
 .result {
-    background: transparent;
     color: #fff;
     width: 20%;
-    padding: 7px 0;
+    padding-top: 5px;
     font-size: 150%;
-    border: 0;
-    border-radius: 0;
-    height: auto;
-    -webkit-appearance: none;
-    text-align: center;
 }
-.result div {
+.result p {
+    background:url('public/dice.svg') no-repeat;
     position: relative;
+    height: 50px;
     width: 50px;
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: 12px;
+    text-align:center;
 }
 
+p.d2  {background-position: 0 -400px;}
+p.d3  {background-position:0 -500px;color: #333}
+p.d4  {background-position:0 -50px;padding-top:15px}
+p.d5  {background-position:0 -600px}
+p.d6  {color: #333}
+p.d7  {background-position:0 -650px}
+p.d8  {background-position:0 -250px;color: #333}
+p.d9  {background-position:0 -100px;color: #333;padding-top:15px;}
+p.d10 {background-position:0 -150px}
+p.d10 {background-position:0 -200px}
+p.d11 {background-position:0 -450px}
+p.d12 {background-position:0 -100px;color: #333;padding-top:15px;}
+p.d13 {background-position:0 -550px}
+p.d14 {background-position:0 -250px}
+p.d15 {background-position:0 -300px}
+p.d16 {background-position:0 -px;color: #333}
+p.d17 {background-position:0 -px;color: #333}
+p.d18 {background-position:0 -px;color: #333}
+p.d19 {background-position:0 -px;color: #333}
+p.d20 {background-position:0 -350px}
+p.d21 {background-position:0 -px;color: #333}
+p.d22 {background-position:0 -px;color: #333}
+p.d23 {background-position:0 -px;color: #333}
+p.d24 {background-position:0 -px;color: #333}
+p.d25 {background-position:0 -px;color: #333}
+p.d26 {background-position:0 -px;color: #333}
+p.d27 {background-position:0 -px;color: #333}
+p.d28 {background-position:0 -px;color: #333}
+p.d29 {background-position:0 -px;color: #333}
 
-
-.result p {margin:0 auto;}
-
-.result div.d2  {width:45px;height:35px;background:#cccccc;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;}
-.result div.d3  {width:61px;height:30px;background:#f1f1f1;color:#333333;-moz-border-radius:52px / 37px;-webkit-border-radius:52px / 37px;border-radius:52px / 37px;padding-bottom:3px;}
-.result div.d4  {width:0;height:auto;background:#f1f1f1;border-left:22px solid #2F4F4F;border-right:22px solid #2F4F4F;border-bottom:44px solid red;margin-top:-10px}
-.result div.d4 p {position:absolute;margin-top:15px;margin-left:-8px}
-.result div.d5  {width:25px;height:35px;background:#f1f1f1;color:#333333;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
-.result div.d6  {width:45px;height:35px;background:#f1f1f1;color:#333333;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
-.result div.d7  {}
-.result div.d8  {}
-.result div.d9  {}
-.result div.d10  {width:0;height:auto;background:#f1f1f1;border-left:20px solid #2F4F4F;border-right:20px solid #2F4F4F;border-bottom:44px solid red;margin-top:-10px}
-.result div.d10 p {position:absolute;margin-top:15px;margin-left:-8px}
-.result div.d11 {}
-.result div.d12 {}
-.result div.d13 {}
-.result div.d14 {}
-.result div.d15 {}
-.result div.d16 {}
-.result div.d17 {}
-.result div.d18 {}
-.result div.d19 {}
-.result div.d20 {}
-.result div.d21 {}
-.result div.d22 {}
-.result div.d23 {}
-.result div.d24 {}
-.result div.d25 {}
-.result div.d26 {}
-.result div.d27 {}
-.result div.d28 {}
-.result div.d29 {}
+.roll-time{
+    color:#a8a8a8;
+    font-size:.75em;
+    position:absolute;
+    top:45px;
+    z-index:10000;
+}
 
 /*Create Dice Button */
 .generate-die{font-weight:700;margin-top:10px;width:100%;text-transform:uppercase;}
@@ -339,3 +340,40 @@ footer {
     bottom: 5px;
     left: 5px
 }
+
+@media screen and (max-width:700px) { 
+    body {font-size:14px}
+    h2 {font-size:175%}
+    header a h1 {
+        font-family: 'Cinzel', serif;
+        font-size:150%;
+        text-decoration: none;
+    }
+    .exit-game {font-size:100%;width:auto}
+    .currentgame h3 {
+        font-size:100%;
+        height:60px;
+        line-height:auto;
+        padding:0;
+        text-align:right;
+        width:auto;
+    }
+    #bad-update-name {
+        font-size:100%;    
+        position: absolute;
+        color: red;
+        top: -5px;
+        padding-left:10px;
+    }
+    #update-game-name {
+        border: none;
+        background-color: inherit;
+        color:#fff;
+        font-size: 100%;
+        height:60px;
+        line-height:auto;
+        padding: 0;
+        width: 20%;
+    }
+    input.roll-all{font-size:100%;width:auto}
+    }
