@@ -48,9 +48,14 @@ input, input[type="password"], input[type="search"], isindex {
 .error {color:#f00}
 
 header a h1 {
-    font-family: 'Cinzel', serif;
+    font-family: 'UnifrakturMaguntia', cursive;
     font-size:225%;
+    text-align:right;
     text-decoration: none;
+}
+
+header a h1 span {
+    font-size: 300%;
 }
 
 header a {
@@ -72,7 +77,7 @@ header a {
 }
 
 .intro span {
-    font-family: 'Cinzel', serif;
+/*    text-transform:uppercase;*/
 }
 
 .generate {
@@ -120,30 +125,23 @@ input.enter-game {
 /* Game Header */
 
 .game-header {
-    height:60px;
     margin-top: 20px;
     position:relative;
     width: 100%
 }
-.exit-game, .currentgame h3{float:left; padding-top:20px}
 
-.exit-game {
-    background: #f73134;
-    font-size:150%;
-    height:60px;
-    line-height:60px;
-    padding: 0;
-    text-align: center;
-    width: 10%
+.game-name {
+    margin:0 auto;
+    width:70%;
 }
-
 .currentgame h3 {
+    float:left;
     font-size:150%;
     height:60px;
     line-height:60px;
     padding:0;
     text-align:right;
-    width:40%;
+    width:55%;
 }
 #bad-update-name {
     font-size:100%;    
@@ -153,14 +151,18 @@ input.enter-game {
     padding-left:10px;
 }
 #update-game-name {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
     border: none;
     background-color: inherit;
     color:#fff;
+    float:left;
     font-size: 150%;
     height:60px;
     line-height:60px;
     padding: 0 0 0 10px;
-    width: 30%
+    width: 45%;
 }
 
 #update-game-name:focus {
@@ -173,7 +175,22 @@ input.enter-game {
     width: 30%
 }
 
-input.roll-all {background-color:#89c46a;float:right;width:10%}
+.game-actions {
+    width:100%;
+}
+
+.exit-game {
+    background: #f73134;
+    float:left;
+    font-size:150%;
+    height:60px;
+    line-height:60px;
+    text-align: center;
+    text-decoration:none;
+    width: 25%
+}
+
+input.roll-all {background-color:#89c46a;float:right;width:25%}
 
 /* Dice Styling*/
 
@@ -191,7 +208,7 @@ input.roll-all {background-color:#89c46a;float:right;width:10%}
     width: auto;
 }
 
-.single-die:nth-child(2){margin-top:10px}
+.single-die:nth-child(2){margin-top:0px}
 .single-die:last-child{border-bottom:3px solid #fff;}
 .delete-die,.sides,.side-selector,.arrow,.result{float:left;}
 .roll{float:right}
@@ -225,7 +242,7 @@ div.delete-roll input.roll {
 .sides {
     background: #2c2c5a;
     color: #fff;
-    width: 25%;
+    width: 35%;
     padding-right: 10px;
     font-size: 150%;
     line-height: 60px;
@@ -237,24 +254,18 @@ div.delete-roll input.roll {
     appearance: none;
     text-align: right;
 }
-.single-die select {
-    background: #2c2c5a;
-    color: #fff;
-    margin: 0;
-    width: auto;
-    overflow:hidden;
-    padding-left:10px;
-    line-height: 60px;
-    font-size: 150%;
-    border: 0;
-    border-radius: 0;
-    height: 60px;
-    appearance:none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    text-indent: 0.01px;
-    text-overflow: '';
-    text-align: center;
+.side-selector {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+        border: none;
+        background: #2c2c5a;
+        color:#fff;
+        font-size: 150%;
+        height:60px;
+        line-height:60px;
+        padding: 0 0 0 10px;
+        width: 15%;
 }
 select:focus {
     outline: none;
@@ -268,53 +279,41 @@ select:focus {
 }
 .result {
     color: #fff;
-    width: 20%;
+    width: 30%;
     padding-top: 5px;
     font-size: 150%;
 }
 .result p {
-    background:url('public/dice.svg') no-repeat;
+    background:url('/dice.svg') no-repeat;
+    color:#333;
     position: relative;
     height: 50px;
     width: 50px;
     margin: 0 auto;
-    padding-top: 12px;
+    padding-top: 15px;
     text-align:center;
 }
 
-p.d2  {background-position: 0 -400px;}
-p.d3  {background-position:0 -500px;color: #333}
-p.d4  {background-position:0 -50px;padding-top:15px}
-p.d5  {background-position:0 -600px}
-p.d6  {color: #333}
-p.d7  {background-position:0 -650px}
-p.d8  {background-position:0 -250px;color: #333}
-p.d9  {background-position:0 -100px;color: #333;padding-top:15px;}
-p.d10 {background-position:0 -150px}
-p.d10 {background-position:0 -200px}
-p.d11 {background-position:0 -450px}
-p.d12 {background-position:0 -100px;color: #333;padding-top:15px;}
-p.d13 {background-position:0 -550px}
-p.d14 {background-position:0 -250px}
-p.d15 {background-position:0 -300px}
-p.d16 {background-position:0 -px;color: #333}
-p.d17 {background-position:0 -px;color: #333}
-p.d18 {background-position:0 -px;color: #333}
-p.d19 {background-position:0 -px;color: #333}
-p.d20 {background-position:0 -350px}
-p.d21 {background-position:0 -px;color: #333}
-p.d22 {background-position:0 -px;color: #333}
-p.d23 {background-position:0 -px;color: #333}
-p.d24 {background-position:0 -px;color: #333}
-p.d25 {background-position:0 -px;color: #333}
-p.d26 {background-position:0 -px;color: #333}
-p.d27 {background-position:0 -px;color: #333}
-p.d28 {background-position:0 -px;color: #333}
-p.d29 {background-position:0 -px;color: #333}
-
-.roll-time{
-    color:#a8a8a8;
-    font-size:.75em;
+p.d2,  p.d18, p.d34, p.d50, p.d66, p.d83, p.d99{background-position: 0 -400px;}
+p.d3,  p.d19, p.d35, p.d51, p.d67, p.d84, p.d100{background-position:0 -500px;color: #333}
+p.d4,  p.d20, p.d36, p.d52, p.d68, p.d85{background-position:0 -50px}
+p.d5,  p.d21, p.d37, p.d53, p.d69, p.d86{background-position:0 -600px}
+p.d6,  p.d22, p.d38, p.d54, p.d71, p.d87{color:#333}
+p.d7,  p.d23, p.d39, p.d55, p.d72, p.d88{background-position:0 -650px}
+p.d8,  p.d24, p.d40, p.d56, p.d73, p.d89{background-position:0 -250px;color: #333}
+p.d9,  p.d25, p.d41, p.d57, p.d74, p.d90{background-position:0 -100px;color: #333}
+p.d10, p.d26, p.d42, p.d58, p.d75, p.d91{background-position:0 -150px}
+p.d11, p.d27, p.d43, p.d59, p.d76, p.d92{background-position:0 -450px}
+p.d12, p.d28, p.d44, p.d60, p.d77, p.d93{background-position:0 -100px;color: #333}
+p.d13, p.d29, p.d45, p.d61, p.d78, p.d94{background-position:0 -550px}
+p.d14, p.d30, p.d46, p.d62, p.d79, p.d95{background-position:0 -250px}
+p.d15, p.d31, p.d47, p.d63, p.d80, p.d96{background-position:0 -300px}
+p.d16, p.d32, p.d48, p.d64, p.d81, p.d97{background-position:0 -350px}
+p.d17, p.d33, p.d49, p.d65, p.d82, p.d98{background-position:0 -200px}
+                                   
+.roll-time{          
+    color:#a8a8a8;   
+    font-size:.75em; 
     position:absolute;
     top:45px;
     z-index:10000;
@@ -341,39 +340,26 @@ footer {
     left: 5px
 }
 
-@media screen and (max-width:700px) { 
+@media screen and (max-width:625px) { 
     body {font-size:14px}
     h2 {font-size:175%}
     header a h1 {
-        font-family: 'Cinzel', serif;
         font-size:150%;
-        text-decoration: none;
     }
-    .exit-game {font-size:100%;width:auto}
+    header a h1 span {
+        font-size:200%;
+    }
+    
+    .game-name {width:100%}
     .currentgame h3 {
-        font-size:100%;
-        height:60px;
-        line-height:auto;
-        padding:0;
-        text-align:right;
-        width:auto;
-    }
-    #bad-update-name {
-        font-size:100%;    
-        position: absolute;
-        color: red;
-        top: -5px;
-        padding-left:10px;
+        width:65%;
     }
     #update-game-name {
-        border: none;
-        background-color: inherit;
-        color:#fff;
-        font-size: 100%;
-        height:60px;
-        line-height:auto;
-        padding: 0;
-        width: 20%;
+        width: 35%;
     }
-    input.roll-all{font-size:100%;width:auto}
-    }
+    .exit-game,input.roll-all {width:40%}
+    .sides {width:30%}
+    .result {width: 20%;}
+}    
+    
+    

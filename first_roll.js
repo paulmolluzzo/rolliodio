@@ -15,17 +15,6 @@ var rollDie = function (t) {
     Dice.update({_id:t._id}, {$set:{result:e, rolled:dateTime}});
 };
 
-var setSideSelector = function() {
-    var currentId = Session.get("current_game")
-    var currentDice = Dice.find({game: currentId}).fetch();
-    for( i=0; i<currentDice.length; i++) {
-          var dieSides = currentDice[i].sides;
-          var dieId = currentDice[i]._id;
-          var targetSelector = document.getElementById(dieId);
-          targetSelector[dieSides-2].selected=true;
-      }
-};
-
 var removeDie = function(targetid) {
     Dice.remove({_id: targetid});
 };
@@ -202,7 +191,7 @@ if (Meteor.isClient) {
         var originalMargin = $(".die-wrap").css("margin-left");
         var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
         var ogMarginNum = parseInt(parsedMargin);
-        $('.currentgame').find(".die-wrap").swipe( {
+        $(".currentgame .die-wrap").swipe( {
             swipeStatus:function(event, phase, direction, distance, fingers){
                 $this = $(this);
                 var targetId = $this.attr("data-id");
@@ -241,11 +230,15 @@ if (Meteor.isClient) {
             Dice.remove(this._id);
         },
         
-        'change select.side-selector': function() {
+        'change input.side-selector': function() {
             var t = document.getElementById(this._id);
-            var v = t.options[t.selectedIndex].value;
-            Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
-            setSideSelector();
+            var v = t.value;
+            // alert(t.value);
+            if (!isNaN(v) && (v > 0)) {
+                Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
+            } else {
+                t.value = ""
+            }
         }
     });
   

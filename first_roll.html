@@ -1,16 +1,13 @@
 <head>
   <title>first_roll</title>
   <script src="/jquery.touchSwipe.min.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Cinzel:700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia|Montserrat' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 </body>
 
 <template name="layout">
-    <header>
-        <a href="{{pathFor 'home'}}"><h1>APPNAME</h1></a>
-    </header>
     {{{yield}}}
   <footer>
       <div class="self-promo">
@@ -21,9 +18,11 @@
 
 <template name="home">
     <div class="home">
+        <header>
+            <a href="{{pathFor 'home'}}"><h1><span>R</span>ollio<span>D</span>io</h1></a>
+        </header>
         <h2>Roll dice with friends!</h2>
-        <p class="intro">Using <span>APPNAME</span> you can create and share virtual dice with friends. Dice rolled on one player's device automatically update every other players' screen.</p>
-        <p class="intro">Lost your dice for <em>Risk</em>? Want to start an epic game of D&amp;D?</p>
+        <p class="intro">Using <span>RollioDio</span> you can create and share virtual dice with friends. Dice rolled on one player's device automatically update every other players' screen.</p>
         {{#if nogame}}
           <p class="error bad-url">Sorry! There was no game called "{{nogame}}."
           </p>
@@ -56,16 +55,19 @@
     <div class="currentgame">
         {{#each games}}
         <div class="game-header clearfix">
-            <a class="exit-game" href="{{pathFor 'home'}}">Exit</a>
-            <h3 class="">Your game is called:</h3>
-            {{#if error}}
-              <span class="error" id="bad-update-name">
-                {{error}} 
-              </span>
-            {{/if}}
-            <input id="update-game-name" type="text" placeholder="{{slug}}" />
-            <!-- Invite friends -->
-            <input type="button" class="roll-all" value="Roll All" />
+            <div class="game-name clearfix">
+                <h3 class="">appname.com/</h3>
+                {{#if error}}
+                  <span class="error" id="bad-update-name">
+                    {{error}} 
+                  </span>
+                {{/if}}
+                <input id="update-game-name" type="text" placeholder="{{slug}}" />        
+            </div>
+            <div class="game-actions clearfix">
+                <a class="exit-game" href="{{pathFor 'home'}}">Exit</a>
+                <input type="button" class="roll-all" value="Roll All" />
+            </div>
         </div>
         {{/each}}
         {{#each dice}}
@@ -80,36 +82,7 @@
     <div class="single-die clearfix">
         <div class="die-wrap clearfix" data-id="{{_id}}">
             <p class="sides">Sides:</p>
-            <select id="{{_id}}" class="side-selector">
-              <option value="2">Coin Flip</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-            </select>
+            <input id="{{_id}}" class="side-selector" type="text" placeholder="{{sides}}" />
             <p class="arrow"></p>
             <div class="result">
                 <p class="{{type}}">{{result}}</p>
