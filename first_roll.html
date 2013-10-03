@@ -1,5 +1,6 @@
 <head>
   <title>first_roll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <script src="/jquery.touchSwipe.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia|Montserrat' rel='stylesheet' type='text/css'>
 </head>
@@ -8,7 +9,9 @@
 </body>
 
 <template name="layout">
+    <div class="page-wrap clearfix">
     {{{yield}}}
+    </div>
   <footer>
       <div class="self-promo">
           <a href="http://paul.molluzzo.com"><img class="logo" src="/logo.png"></a>
@@ -56,7 +59,7 @@
         {{#each games}}
         <div class="game-header clearfix">
             <div class="game-name clearfix">
-                <h3 class="">appname.com/</h3>
+                <h3 class="">rolliodio.meteor.com/</h3>
                 {{#if error}}
                   <span class="error" id="bad-update-name">
                     {{error}} 
@@ -82,12 +85,12 @@
     <div class="single-die clearfix">
         <div class="die-wrap clearfix" data-id="{{_id}}">
             <p class="sides">Sides:</p>
-            <input id="{{_id}}" class="side-selector" type="text" placeholder="{{sides}}" />
+            <input type="number" id="{{_id}}" class="side-selector" type="text" placeholder="{{sides}}" />
             <p class="arrow"></p>
             <div class="result">
                 <p class="{{type}}">{{result}}</p>
             </div>
-            <p class="roll-time">Last rolled: {{rolled}}</p>
+            <p class="roll-time">As of: {{rolled}}</p>
         </div>
         <div class="delete-roll">
             <input type="button" class="delete-die" value="Delete»»">

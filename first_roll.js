@@ -143,10 +143,6 @@ if (Meteor.isClient) {
         return Dice.find({game: currentId});
     };
     
-    Template.currentgame.updateselect = function() {
-        setTimeout(function(){setSideSelector()},1);
-    };
-    
     Template.currentgame.games = function() {
         var currentId = Session.get("current_game");
         return Games.find({slug: currentId});

@@ -1,12 +1,12 @@
-/* Common */
-
-*:focus {outline-color:#fff;outline-width:3px}
-
+html {
+    height:100%;
+}
 body {
     background-color: #1b1b38;
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-size:18px;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 18px;
+    height:100%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -15,212 +15,201 @@ body {
     user-select: none;
     overflow-x: hidden;
 }
-
-a {color:#fff}
-
-h2 {font-size:175%}
-
-input[type='submit'], input[type='button'] {
+a {
+    color: #fff
+}
+h2 {
+    font-size: 175%
+}
+input[type='submit'],input[type='button'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color:#ccc;
+    background-color: #ccc;
     border-color: none;
     border: 0;
     border: none;
     border-image-width: 0;
-    -moz-border-radius:0;
-    -webkit-border-radius:0;
-    border-radius:0;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     box-shadow: none;
     color: #fff;
     font-size: 150%;
     outline: 0;
     padding: 0 10px;
-    line-height:60px;
-    height:60px;
+    line-height: 60px;
+    height: 60px;
+}
+input,input[type="password"],input[type="search"],isindex {
+    padding: 0;
+}
+*:focus {
+    outline-color: #fff;
+    outline-width: 3px
+}
+.page-wrap {
+    min-height:100%;
 }
 
-input, input[type="password"], input[type="search"], isindex {
-    padding:0;
+.error {
+    color: #f00
 }
-
-.error {color:#f00}
-
 header a h1 {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size:225%;
-    text-align:right;
+    font-family: 'UnifrakturMaguntia',cursive;
+    font-size: 225%;
+    text-align: right;
     text-decoration: none;
 }
-
 header a h1 span {
     font-size: 300%;
 }
-
 header a {
-    text-decoration: none;    
+    text-decoration: none;
 }
-
-/* New and Enter Game */
-
 .home {
-    margin:30px auto 0 auto;
-    width:90%;
+    margin: 0 auto;
+    padding-top: 30px;
+    width: 90%;
 }
-
-.home h2 {
-}
-
 .intro {
     margin-top: 25px;
 }
-
-.intro span {
-/*    text-transform:uppercase;*/
+.intro span {/* text-transform:uppercase;*/
 }
-
 .generate {
     display: block;
-    font-size:150%;
+    font-size: 150%;
     height: 60px;
     margin-top: 50px;
-    width:100%;
+    width: 100%;
 }
-
-#bad-entry {
-    
-}
-
 .enter-game p {
     margin: 20px 0;
     text-align: center;
 }
-
-#enter-game-name, input.enter-game {
-    float:left;
+#enter-game-name,input.enter-game {
+    float: left;
     font-size: 150%;
-    line-height:60px;
-    height:60px;
+    line-height: 60px;
+    height: 60px;
     text-align: center;
 }
-    
 #enter-game-name {
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border:0;
-    line-height:60px;
-    margin:0;
+    border: 0;
+    line-height: 60px;
+    margin: 0;
     padding-left: 10%;
-    width:90%;
+    width: 90%;
 }
-
 input.enter-game {
-    margin:0;
+    margin: 0;
     text-align: center;
-    width:10%;
+    width: 10%;
 }
-
-/* Game Header */
-
 .game-header {
-    margin-top: 20px;
-    position:relative;
+    padding-top: 20px;
+    position: relative;
     width: 100%
 }
-
 .game-name {
-    margin:0 auto;
-    width:70%;
+    margin: 0 auto;
+    width: 70%;
 }
 .currentgame h3 {
-    float:left;
-    font-size:150%;
-    height:60px;
-    line-height:60px;
-    padding:0;
-    text-align:right;
-    width:55%;
+    float: left;
+    font-size: 150%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    text-align: right;
+    width: 55%;
 }
 #bad-update-name {
-    font-size:100%;    
+    font-size: 100%;
     position: absolute;
     color: red;
     top: -5px;
-    padding-left:10px;
+    padding-left: 10px;
 }
 #update-game-name {
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
     background-color: inherit;
-    color:#fff;
-    float:left;
+    color: #fff;
+    float: left;
     font-size: 150%;
-    height:60px;
-    line-height:60px;
+    height: 60px;
+    line-height: 60px;
     padding: 0 0 0 10px;
     width: 45%;
 }
-
 #update-game-name:focus {
     background-color: inherit;
-    color:#fff;
+    color: #fff;
     font-size: 150%;
-    height:60px;
-    line-height:60px;
+    height: 60px;
+    line-height: 60px;
     padding: 0 0 0 10px;
     width: 30%
 }
-
 .game-actions {
-    width:100%;
+    width: 100%;
 }
-
 .exit-game {
     background: #f73134;
-    float:left;
-    font-size:150%;
-    height:60px;
-    line-height:60px;
+    float: left;
+    font-size: 150%;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
-    text-decoration:none;
+    text-decoration: none;
     width: 25%
 }
-
-input.roll-all {background-color:#89c46a;float:right;width:25%}
-
-/* Dice Styling*/
-
+input.roll-all {
+    background-color: #89c46a;
+    float: right;
+    width: 25%
+}
 .single-die {
-    background: -moz-linear-gradient(left,  #f73134 0%, #f73134 50%, #89c46a 50%, #89c46a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f73134), color-stop(50%,#f73134), color-stop(50%,#89c46a), color-stop(100%,#89c46a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  #f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%); /* IE10+ */
-    background: linear-gradient(to right,  #f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f73134', endColorstr='#89c46a',GradientType=1 ); /* IE6-9 */
-    border-top: 3px solid #fff;
+    background: -moz-linear-gradient(left,#f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%);/* FF3.6+ */
+    background:-webkit-gradient(linear,left top,right top,color-stop(0%,#f73134),color-stop(50%,#f73134),color-stop(50%,#89c46a),color-stop(100%,#89c46a));/* Chrome,Safari4+ */
+    background:-webkit-linear-gradient(left,#f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%);/* Chrome10+,Safari5.1+ */
+    background:-o-linear-gradient(left,#f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%);/* Opera 11.10+ */
+    background:-ms-linear-gradient(left,#f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%);/* IE10+ */
+    background:linear-gradient(to right,#f73134 0%,#f73134 50%,#89c46a 50%,#89c46a 100%);/* W3C */
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f73134',endColorstr='#89c46a',GradientType=1 );/* IE6-9 */
+    border-top:3px solid #fff;
     padding: 0 7px;
     height: 60px;
     width: auto;
 }
-
-.single-die:nth-child(2){margin-top:0px}
-.single-die:last-child{border-bottom:3px solid #fff;}
-.delete-die,.sides,.side-selector,.arrow,.result{float:left;}
-.roll{float:right}
+.single-die:nth-child(2) {
+    margin-top: 0px
+}
+.single-die:last-child {
+    border-bottom: 3px solid #fff;
+}
+.delete-die,.sides,.side-selector,.arrow,.result {
+    float: left;
+}
+.roll {
+    float: right
+}
 .delete-roll {
     display: block;
-    height:100%;
+    height: 100%;
     margin-top: -64px;
     width: 100%
 }
-div.delete-roll input.delete-die, div.delete-roll input.roll {
-    background-color:rgba(255,255,255,0);
-    line-height:60px;
+div.delete-roll input.delete-die,div.delete-roll input.roll {
+    background-color: rgba(255,255,255,0);
+    line-height: 60px;
     text-align: left;
     width: 40%;
     padding: 0px;
@@ -228,7 +217,6 @@ div.delete-roll input.delete-die, div.delete-roll input.roll {
 div.delete-roll input.roll {
     text-align: right;
 }
-
 .die-wrap {
     background-color: #1b1b38;
     display: block;
@@ -255,17 +243,21 @@ div.delete-roll input.roll {
     text-align: right;
 }
 .side-selector {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box; 
-        box-sizing: border-box;
-        border: none;
-        background: #2c2c5a;
-        color:#fff;
-        font-size: 150%;
-        height:60px;
-        line-height:60px;
-        padding: 0 0 0 10px;
-        width: 15%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    background: #2c2c5a;
+    color: #fff;
+    font-size: 150%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 0 0 10px;
+    width: 15%;
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 select:focus {
     outline: none;
@@ -284,82 +276,131 @@ select:focus {
     font-size: 150%;
 }
 .result p {
-    background:url('/dice.svg') no-repeat;
-    color:#333;
+    background: url('/dice.svg') no-repeat;
+    color: #333;
     position: relative;
     height: 50px;
     width: 50px;
     margin: 0 auto;
     padding-top: 15px;
-    text-align:center;
+    text-align: center;
 }
-
-p.d2,  p.d18, p.d34, p.d50, p.d66, p.d83, p.d99{background-position: 0 -400px;}
-p.d3,  p.d19, p.d35, p.d51, p.d67, p.d84, p.d100{background-position:0 -500px;color: #333}
-p.d4,  p.d20, p.d36, p.d52, p.d68, p.d85{background-position:0 -50px}
-p.d5,  p.d21, p.d37, p.d53, p.d69, p.d86{background-position:0 -600px}
-p.d6,  p.d22, p.d38, p.d54, p.d71, p.d87{color:#333}
-p.d7,  p.d23, p.d39, p.d55, p.d72, p.d88{background-position:0 -650px}
-p.d8,  p.d24, p.d40, p.d56, p.d73, p.d89{background-position:0 -250px;color: #333}
-p.d9,  p.d25, p.d41, p.d57, p.d74, p.d90{background-position:0 -100px;color: #333}
-p.d10, p.d26, p.d42, p.d58, p.d75, p.d91{background-position:0 -150px}
-p.d11, p.d27, p.d43, p.d59, p.d76, p.d92{background-position:0 -450px}
-p.d12, p.d28, p.d44, p.d60, p.d77, p.d93{background-position:0 -100px;color: #333}
-p.d13, p.d29, p.d45, p.d61, p.d78, p.d94{background-position:0 -550px}
-p.d14, p.d30, p.d46, p.d62, p.d79, p.d95{background-position:0 -250px}
-p.d15, p.d31, p.d47, p.d63, p.d80, p.d96{background-position:0 -300px}
-p.d16, p.d32, p.d48, p.d64, p.d81, p.d97{background-position:0 -350px}
-p.d17, p.d33, p.d49, p.d65, p.d82, p.d98{background-position:0 -200px}
-                                   
-.roll-time{          
-    color:#a8a8a8;   
-    font-size:.75em; 
-    position:absolute;
-    top:45px;
-    z-index:10000;
+p.d2,p.d18,p.d34,p.d50,p.d66,p.d83,p.d99 {
+    background-position: 0 -400px;
 }
-
-/*Create Dice Button */
-.generate-die{font-weight:700;margin-top:10px;width:100%;text-transform:uppercase;}
-
-/* Not Found */
-
+p.d3,p.d19,p.d35,p.d51,p.d67,p.d84,p.d100 {
+    background-position: 0 -500px;
+    color: #333
+}
+p.d4,p.d20,p.d36,p.d52,p.d68,p.d85 {
+    background-position: 0 -50px
+}
+p.d5,p.d21,p.d37,p.d53,p.d69,p.d86 {
+    background-position: 0 -600px
+}
+p.d6,p.d22,p.d38,p.d54,p.d71,p.d87 {
+    color: #333
+}
+p.d7,p.d23,p.d39,p.d55,p.d72,p.d88 {
+    background-position: 0 -650px
+}
+p.d8,p.d24,p.d40,p.d56,p.d73,p.d89 {
+    background-position: 0 -250px;
+    color: #333
+}
+p.d9,p.d25,p.d41,p.d57,p.d74,p.d90 {
+    background-position: 0 -100px;
+    color: #333
+}
+p.d10,p.d26,p.d42,p.d58,p.d75,p.d91 {
+    background-position: 0 -150px
+}
+p.d11,p.d27,p.d43,p.d59,p.d76,p.d92 {
+    background-position: 0 -450px
+}
+p.d12,p.d28,p.d44,p.d60,p.d77,p.d93 {
+    background-position: 0 -100px;
+    color: #333
+}
+p.d13,p.d29,p.d45,p.d61,p.d78,p.d94 {
+    background-position: 0 -550px
+}
+p.d14,p.d30,p.d46,p.d62,p.d79,p.d95 {
+    background-position: 0 -250px
+}
+p.d15,p.d31,p.d47,p.d63,p.d80,p.d96 {
+    background-position: 0 -300px
+}
+p.d16,p.d32,p.d48,p.d64,p.d81,p.d97 {
+    background-position: 0 -350px
+}
+p.d17,p.d33,p.d49,p.d65,p.d82,p.d98 {
+    background-position: 0 -200px
+}
+.roll-time {
+    color: #a8a8a8;
+    font-size: .75em;
+    position: absolute;
+    top: 45px;
+    z-index: 10000;
+}
+.generate-die {
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+    text-transform: uppercase;
+}
 .not-found {
-    margin:30px auto 0 auto;
-    width:90%;
+    margin: 30px auto 0 auto;
+    width: 90%;
 }
-
 .not-found h2 {
     margin: 50px auto;
     text-align: center;
 }
-
 footer {
-    position: fixed;
-    bottom: 5px;
-    left: 5px
+    height: 15px;
+    margin-top:-20px;
+    padding-left:5px;
+}
+.logo {
+    height: 15px;
+    width: auto;
+}
+@media screen and (max-width:625px) {body {
+    font-size: 14px
+}
+h2 {
+    font-size: 175%
+}
+header a h1 {
+    font-size: 150%;
+    text-align: center
+}
+header a h1 span {
+    font-size: 200%;
+}
+.game-header {
+    padding-top: 10px;
+}
+.game-name {
+    width: 100%
+}
+.currentgame h3 {
+    width: 65%;
+}
+#update-game-name {
+    width: 35%;
+}
+.exit-game,input.roll-all {
+    width: 40%
+}
+.sides {
+    width: 30%
+}
+.result {
+    width: 20%;
 }
 
-@media screen and (max-width:625px) { 
-    body {font-size:14px}
-    h2 {font-size:175%}
-    header a h1 {
-        font-size:150%;
-    }
-    header a h1 span {
-        font-size:200%;
-    }
-    
-    .game-name {width:100%}
-    .currentgame h3 {
-        width:65%;
-    }
-    #update-game-name {
-        width: 35%;
-    }
-    .exit-game,input.roll-all {width:40%}
-    .sides {width:30%}
-    .result {width: 20%;}
-}    
-    
-    
+}
