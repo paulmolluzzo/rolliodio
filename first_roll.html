@@ -3,6 +3,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <script src="/jquery.touchSwipe.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia|Montserrat' rel='stylesheet' type='text/css'>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44582562-1', 'rolliodio.com');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 
 <body>
@@ -26,10 +36,6 @@
         </header>
         <h2>Roll dice with friends!</h2>
         <p class="intro">Using <span>RollioDio</span> you can create and share virtual dice with friends. Dice rolled on one player's device automatically update every other players' screen.</p>
-        {{#if nogame}}
-          <p class="error bad-url">Sorry! There was no game called "{{nogame}}."
-          </p>
-        {{/if}}
         {{> newgame}}
         {{> entergame}}
     </div>
@@ -75,7 +81,6 @@
         {{/each}}
         {{#each dice}}
           {{> die}}
-          {{ updateselect }}
         {{/each}} 
     </div>  
     {{> newdie}} 
@@ -85,7 +90,7 @@
     <div class="single-die clearfix">
         <div class="die-wrap clearfix" data-id="{{_id}}">
             <p class="sides">Sides:</p>
-            <input type="number" id="{{_id}}" class="side-selector" type="text" placeholder="{{sides}}" />
+            <input id="{{_id}}" class="side-selector" type="text" placeholder="{{sides}}" />
             <p class="arrow"></p>
             <div class="result">
                 <p class="{{type}}">{{result}}</p>

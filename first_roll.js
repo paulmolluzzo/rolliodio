@@ -229,7 +229,6 @@ if (Meteor.isClient) {
         'change input.side-selector': function() {
             var t = document.getElementById(this._id);
             var v = t.value;
-            // alert(t.value);
             if (!isNaN(v) && (v > 0)) {
                 Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
             } else {
