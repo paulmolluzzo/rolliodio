@@ -1,6 +1,8 @@
 <head>
-  <title>first_roll</title>
+  <title>RollioDio | Roll Virtual Dice with Friends</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png">
   <script src="/jquery.touchSwipe.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=UnifrakturMaguntia|Montserrat' rel='stylesheet' type='text/css'>
   <script>
@@ -44,6 +46,7 @@
 <template name="newgame">
     <div class="new-game">
         <input type="button" class="generate" value="Start a New Game!">
+        <p>(no signup required)</p>
     </div>
 </template>
 
@@ -65,7 +68,7 @@
         {{#each games}}
         <div class="game-header clearfix">
             <div class="game-name clearfix">
-                <h3 class="">rolliodio.meteor.com/</h3>
+                <h3 class="">rolliodio.com/</h3>
                 {{#if error}}
                   <span class="error" id="bad-update-name">
                     {{error}} 
@@ -112,7 +115,7 @@
 
 <template name="loading">
     <div class="loading">
-        <h1>Loading...</h1>
+        <img src="/loading.gif" alt="Loading..."/>
     </div>
 </template>
 

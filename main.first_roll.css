@@ -25,7 +25,7 @@ input[type='submit'],input[type='button'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #ccc;
+    background-color: #aaa;
     border-color: none;
     border: 0;
     border: none;
@@ -84,7 +84,13 @@ header a {
     margin-top: 50px;
     width: 100%;
 }
+
+.new-game p {
+    margin-top:10px;
+    text-align:center;
+}
 .enter-game p {
+    font-size: 150%;
     margin: 20px 0;
     text-align: center;
 }
@@ -363,6 +369,22 @@ p.d17,p.d33,p.d49,p.d65,p.d82,p.d98 {
     margin: 50px auto;
     text-align: center;
 }
+
+.loading {
+    height: 300px;
+    width:100%;
+    position: relative;
+}
+
+.loading img {
+    margin: auto;
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+}
+
 footer {
     height: 15px;
     margin-top:-20px;
@@ -379,11 +401,11 @@ h2 {
     font-size: 175%
 }
 header a h1 {
-    font-size: 150%;
+    font-size: 200%;
     text-align: center
 }
 header a h1 span {
-    font-size: 200%;
+    font-size: 225%;
 }
 .game-header {
     padding-top: 10px;
