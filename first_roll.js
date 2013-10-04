@@ -184,36 +184,39 @@ if (Meteor.isClient) {
     });
   
     Template.die.rendered = function() {
-        var originalMargin = $(".die-wrap").css("margin-left");
-        var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
-        var ogMarginNum = parseInt(parsedMargin);
-        $(".currentgame .die-wrap").swipe( {
-            swipeStatus:function(event, phase, direction, distance, fingers){
-                $this = $(this);
-                var targetId = $this.attr("data-id");
-                var threshold = 150;
+        $('.currentgame').on('touchstart', '.single-die', function(){
+            var originalMargin = $(".die-wrap").css("margin-left");
+            var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
+            var ogMarginNum = parseInt(parsedMargin);
+            $(this).swipe( {
+                swipeStatus:function(event, phase, direction, distance, fingers){
+                    $this = $(this);
+                    var target = $(this).children();
+                    var targetId = target.attr("data-id");
+                    var threshold = 150;
                 
-                if (direction=="left"){
-                    $this.css("margin-left",ogMarginNum + (distance*-0.5) + "px");
-                    if ( distance>threshold){
-                        $this.css("margin-left", originalMargin);
-                        rollDie(Dice.findOne({_id:targetId}));
+                    if (direction=="left"){
+                        target.css("margin-left",ogMarginNum + (distance*-0.5) + "px");
+                        if ( distance>threshold){
+                            target.css("margin-left", originalMargin);
+                            setTimeout(rollDie(Dice.findOne({_id:targetId})), 100);
+                        }
+                        if (phase=="end") {
+                            target.animate({marginLeft: originalMargin});
+                        }
                     }
-                    if (phase=="end") {
-                        $this.animate({marginLeft: originalMargin});
-                    }
-                }
 
-                if (direction=="right"){
-                    $this.css("margin-left",ogMarginNum + (distance/2) + "px");
-                    if ( distance>threshold){
-                        $this.parent().fadeOut('fast', function(){removeDie(targetId)});
-                    } 
-                    if (phase=="end") {
-                        $this.animate({marginLeft: originalMargin});
+                    if (direction=="right"){
+                        target.css("margin-left",ogMarginNum + (distance/2) + "px");
+                        if ( distance>threshold){
+                            $this.fadeOut('fast', function(){removeDie(targetId)});
+                        } 
+                        if (phase=="end") {
+                            target.animate({marginLeft: originalMargin});
+                        }
                     }
-                }
-            }  
+                } 
+            });
         });
     };
     

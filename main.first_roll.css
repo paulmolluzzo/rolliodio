@@ -287,55 +287,59 @@ select:focus {
 }
 p.d2,p.d18,p.d34,p.d50,p.d66,p.d83,p.d99 {
     background-position: 0 -400px;
+    color: #fff;
 }
 p.d3,p.d19,p.d35,p.d51,p.d67,p.d84,p.d100 {
     background-position: 0 -500px;
-    color: #333
 }
 p.d4,p.d20,p.d36,p.d52,p.d68,p.d85 {
-    background-position: 0 -50px
+    background-position: 0 -50px;
+    color: #fff;
 }
 p.d5,p.d21,p.d37,p.d53,p.d69,p.d86 {
-    background-position: 0 -600px
+    background-position: 0 -600px;
+    color: #fff;
 }
-p.d6,p.d22,p.d38,p.d54,p.d71,p.d87 {
-    color: #333
-}
+p.d6,p.d22,p.d38,p.d54,p.d71,p.d87 {}
 p.d7,p.d23,p.d39,p.d55,p.d72,p.d88 {
-    background-position: 0 -650px
+    background-position: 0 -650px;
+    color: #fff;
 }
 p.d8,p.d24,p.d40,p.d56,p.d73,p.d89 {
     background-position: 0 -250px;
-    color: #333
 }
 p.d9,p.d25,p.d41,p.d57,p.d74,p.d90 {
     background-position: 0 -100px;
-    color: #333
 }
 p.d10,p.d26,p.d42,p.d58,p.d75,p.d91 {
-    background-position: 0 -150px
+    background-position: 0 -150px;
+    color: #fff;
 }
 p.d11,p.d27,p.d43,p.d59,p.d76,p.d92 {
-    background-position: 0 -450px
+    background-position: 0 -450px;
+    color: #fff;
 }
 p.d12,p.d28,p.d44,p.d60,p.d77,p.d93 {
     background-position: 0 -100px;
-    color: #333
 }
 p.d13,p.d29,p.d45,p.d61,p.d78,p.d94 {
-    background-position: 0 -550px
+    background-position: 0 -550px;
+    color: #fff;
 }
 p.d14,p.d30,p.d46,p.d62,p.d79,p.d95 {
-    background-position: 0 -250px
+    background-position: 0 -250px;
 }
 p.d15,p.d31,p.d47,p.d63,p.d80,p.d96 {
-    background-position: 0 -300px
+    background-position: 0 -300px;
+    color: #fff;
 }
 p.d16,p.d32,p.d48,p.d64,p.d81,p.d97 {
-    background-position: 0 -350px
+    background-position: 0 -350px;
+    color: #fff;
 }
 p.d17,p.d33,p.d49,p.d65,p.d82,p.d98 {
-    background-position: 0 -200px
+    background-position: 0 -200px;
+    color: #fff;
 }
 .roll-time {
     color: #a8a8a8;
