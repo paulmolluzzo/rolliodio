@@ -21,7 +21,7 @@ a {
 h2 {
     font-size: 175%
 }
-input[type='submit'],input[type='button'] {
+input[type='submit'],input[type='button']{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -41,6 +41,16 @@ input[type='submit'],input[type='button'] {
     line-height: 60px;
     height: 60px;
 }
+input[type='text'] {
+    border-color: none;
+    border: 0;
+    border: none;
+    border-image-width: 0;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
 input,input[type="password"],input[type="search"],isindex {
     padding: 0;
 }
@@ -427,6 +437,9 @@ header a h1 span {
 }
 .result {
     width: 20%;
+}
+footer {
+    margin-top:0px;
 }
 
 }
