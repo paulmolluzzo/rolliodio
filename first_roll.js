@@ -124,6 +124,7 @@ if (Meteor.isClient) {
         var newHash = modifiedId.substring(0, 6);
         Session.set("no_game", null);
         validCreation(newId, newHash, modifiedId);
+        _trackEvent('games', 'new_game')
         }
     });
     
@@ -165,6 +166,7 @@ if (Meteor.isClient) {
                 });
                 Games.update({_id:this._id}, {$set:{slug:n}});
                 Router.go('currentgame', {slug: n});
+                _trackEvent('games', 'new_game_name')
             }
         },
       
@@ -180,6 +182,7 @@ if (Meteor.isClient) {
                 rollDie(die);
                 count += 1;
             });
+            _trackEvent('dice', 'roll_all')
         }
     });
   
@@ -200,6 +203,7 @@ if (Meteor.isClient) {
                         if ( distance>threshold){
                             target.css("margin-left", originalMargin);
                             setTimeout(rollDie(Dice.findOne({_id:targetId})), 100);
+                            _trackEvent('dice', 'roll_one')
                         }
                         if (phase=="end") {
                             target.animate({marginLeft: originalMargin});
@@ -210,6 +214,7 @@ if (Meteor.isClient) {
                         target.css("margin-left",ogMarginNum + (distance/2) + "px");
                         if ( distance>threshold){
                             $this.fadeOut('fast', function(){removeDie(targetId)});
+                            _trackEvent('dice', 'delete_one')
                         } 
                         if (phase=="end") {
                             target.animate({marginLeft: originalMargin});
@@ -223,10 +228,12 @@ if (Meteor.isClient) {
     Template.die.events({
         'click input.roll': function() {
             rollDie(this);
+            _trackEvent('dice', 'roll_one')
         },
 
         'click input.delete-die': function () {
             Dice.remove(this._id);
+            _trackEvent('dice', 'delete_one')
         },
         
         'change input.side-selector': function() {
@@ -234,6 +241,7 @@ if (Meteor.isClient) {
             var v = t.value;
             if (!isNaN(v) && (v > 0)) {
                 Dice.update({_id:this._id}, {$set:{sides:v, type:"d"+v}});
+                _trackEvent('dice', 'update_sides', v)
             } else {
                 t.value = ""
             }
@@ -245,6 +253,7 @@ if (Meteor.isClient) {
             var currentdate = new Date().getTime();
             var currentId = Session.get("current_game");
             Dice.insert({type: "d6", sides: 6, game: currentId, result:"-", rolled: "never"});
+            _trackEvent('dice', 'add_die')
         }
     });
 }
