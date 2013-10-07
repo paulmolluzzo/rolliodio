@@ -184,14 +184,14 @@ if (Meteor.isClient) {
     });
   
     Template.die.rendered = function() {
-        $('.currentgame').on('touchstart', '.single-die', function(){
+        $('.currentgame').on('touchstart mousedown', '.single-die', function(){
             var originalMargin = $(".die-wrap").css("margin-left");
             var parsedMargin = originalMargin.replace(/[^-\d\.]/g, '');
             var ogMarginNum = parseInt(parsedMargin);
             $(this).swipe( {
                 swipeStatus:function(event, phase, direction, distance, fingers){
                     $this = $(this);
-                    var target = $(this).children();
+                    var target = $(this).children('.die-wrap');
                     var targetId = target.attr("data-id");
                     var threshold = 150;
                 
