@@ -96,7 +96,7 @@ Router.map(function () {
             return Games.findOne({slug: this.params.slug})
     },
     waitOn: function() {
-                return App.subs.games;
+            return Meteor.subscribe('dice', Session.get("current_game"));
     }
   });
   
@@ -106,13 +106,8 @@ Router.map(function () {
 });
 
 if (Meteor.isClient) {
-
-    App = {
-        subs: {
-            games: Meteor.subscribe('games'),
-            dice: Meteor.subscribe('dice')
-        }
-    };
+        
+    Meteor.subscribe('games');
     
     Handlebars.registerHelper('currentGameIs',function(game){
         return Session.get("current_game") == game;
@@ -267,13 +262,9 @@ if (Meteor.isServer) {
           return Games.find({});
       });
       
-      Meteor.publish("dice", function(){
-          return Dice.find();
+      Meteor.publish("dice", function(currentGame){
+          return Dice.find({game: currentGame});
       });
-      
-      // Uncomment to clear the DB
-      // Games.remove({});
-      // Dice.remove({});
       
       Dice.allow({
           insert: function () { return true; },
