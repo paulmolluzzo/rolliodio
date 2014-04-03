@@ -74,20 +74,21 @@ var enterExisting = function(n) {
 };
 
 Router.configure({
-  layout: 'layout',
+  layoutTemplate: 'layout',
   notFoundTemplate: 'notFound',
   loadingTemplate: 'loading'
 });
 
 Router.map(function () {
   this.route('home', {
-    path: '/'
+    path: '/',
+    layoutTemplate:'layout'
   });
 
   this.route('currentgame', {
     template:'currentgame',
     path: '/:slug',
-    before: function() {
+    onBeforeAction: function() {
                 var slug = this.params.slug;
                 if (Validation.game_exists(slug))
                   Session.set("current_game", slug);            
@@ -257,6 +258,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+
+      Games.insert({});
+
       
       Meteor.publish("games", function(){
           return Games.find({});
